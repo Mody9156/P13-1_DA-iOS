@@ -90,6 +90,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		23ABD80B2CDD0CDC009868C6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		422740642C3BF4DC00E7522C = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +120,7 @@
 		4227406F2C3BF4DC00E7522C /* Relayance */ = {
 			isa = PBXGroup;
 			children = (
+				23ABD80B2CDD0CDC009868C6 /* View */,
 				23ABD80A2CDD0CC2009868C6 /* Model */,
 				422740EC2C3ECCF900E7522C /* Model.swift */,
 				422740EE2C3ECD1500E7522C /* DateExtension.swift */,
