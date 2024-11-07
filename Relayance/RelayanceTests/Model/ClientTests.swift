@@ -12,9 +12,9 @@ final class ClientTests: XCTestCase {
     
     func testClientInitialization_WithValidData_ContainsExpectedClients(){
         
-        var nom  = "Malala Yousafzai"
-        var email = "malala.yousafzai@example.com"
-        var dateCreationString = "2022-03-10T10:45:00Z"
+        let nom  = "Malala Yousafzai"
+        let email = "malala.yousafzai@example.com"
+        let dateCreationString = "2022-03-10T10:45:00Z"
         var dateCreation: Date {
             Date.dateFromString(dateCreationString) ?? Date.now
         }
