@@ -86,6 +86,8 @@
 		23ABD80A2CDD0CC2009868C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				422740F62C3ECFD600E7522C /* ModelData.swift */,
+				422740EC2C3ECCF900E7522C /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,6 +95,9 @@
 		23ABD80B2CDD0CDC009868C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				422740FC2C3ED18D00E7522C /* AjoutClientView.swift */,
+				422740FA2C3ED0EE00E7522C /* DetailClientView.swift */,
+				422740F42C3ECFCA00E7522C /* ListClientsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,16 +135,11 @@
 				23ABD80C2CDD0CE9009868C6 /* ViewModel */,
 				23ABD80B2CDD0CDC009868C6 /* View */,
 				23ABD80A2CDD0CC2009868C6 /* Model */,
-				422740EC2C3ECCF900E7522C /* Model.swift */,
 				422740EE2C3ECD1500E7522C /* DateExtension.swift */,
 				422740702C3BF4DC00E7522C /* RelayanceApp.swift */,
 				422740742C3BF4DD00E7522C /* Assets.xcassets */,
 				422740762C3BF4DD00E7522C /* Preview Content */,
-				422740F42C3ECFCA00E7522C /* ListClientsView.swift */,
-				422740F62C3ECFD600E7522C /* ModelData.swift */,
 				422740F82C3ED02400E7522C /* Source.json */,
-				422740FA2C3ED0EE00E7522C /* DetailClientView.swift */,
-				422740FC2C3ED18D00E7522C /* AjoutClientView.swift */,
 			);
 			path = Relayance;
 			sourceTree = "<group>";
