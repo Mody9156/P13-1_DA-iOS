@@ -38,7 +38,3 @@ struct ListClientsView: View {
     }
 
 }
-
-#Preview {
-    ListClientsView()
-}

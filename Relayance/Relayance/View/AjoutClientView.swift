@@ -40,6 +40,3 @@ struct AjoutClientView: View {
     }
 }
 
-#Preview {
-    AjoutClientView(dismissModal: .constant(false))
-}

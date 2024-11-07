@@ -41,6 +41,3 @@ struct DetailClientView: View {
     }
 }
 
-#Preview {
-    DetailClientView(client: Client(nom: "Tata", email: "tata@email", dateCreationString: "20:32 Wed, 30 Oct 2019"))
-}
