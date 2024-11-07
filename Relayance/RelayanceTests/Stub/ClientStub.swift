@@ -10,6 +10,7 @@ import XCTest
 
 
 extension Client {
+    
     static func stubClient() -> Client {
           return Client(nom: "John Doe", email: "john.doe@example.com", dateCreationString: "2023-11-07T12:00:00Z")
       }
@@ -21,5 +22,16 @@ extension Client {
       static func stubClientWithInvalidEmail() -> Client {
           return Client(nom: "Jane Doe", email: "invalid-email", dateCreationString: "2023-11-07T12:00:00Z")
       }
+    
+    static func stubCreatedNewClient() -> Client {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                
+        let fixedDateString = "2023-11-07T12:00:00.000Z"
+
+        return Client(nom: "Jane Doe", email: "john.doe@example.com", dateCreationString: fixedDateString)
+        
+    }
 }
 

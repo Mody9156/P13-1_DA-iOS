@@ -29,8 +29,7 @@ final class ClientTests: XCTestCase {
     }
     
     func testClientInitialization_WithInValidData_ContainsExpectedClients(){
-      
-        //When
+        
         let client = Client.stubClientWithEmptyData()
         
         //Then
@@ -77,12 +76,18 @@ final class ClientTests: XCTestCase {
         var dateCreation: Date {
             Date.dateFromString(dateCreationString) ?? Date.now
         }
+        let aujourdhui = Date.now
+        
         //When
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
         
         let estNouveauClient = client.estNouveauClient()
         
         XCTAssertFalse(estNouveauClient)
+        XCTAssertNotEqual(aujourdhui.getYear(), client.dateCreation.getYear())
+        XCTAssertNotEqual(aujourdhui.getMonth(), client.dateCreation.getMonth())
+        XCTAssertNotEqual(aujourdhui.getDay(), client.dateCreation.getDay())
+
     }
     
     func testClientInitialization_WhenNew_ClientIsMarkedAsNew(){
@@ -98,7 +103,7 @@ final class ClientTests: XCTestCase {
         
         let estNouveauClient = client.estNouveauClient()
         
-//        XCTAssertTrue(estNouveauClient)
+        XCTAssertTrue(estNouveauClient)
     }
     
 }
