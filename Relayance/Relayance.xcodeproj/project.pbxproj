@@ -86,6 +86,8 @@
 		23ABD80A2CDD0CC2009868C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				422740EE2C3ECD1500E7522C /* DateExtension.swift */,
+				422740F82C3ED02400E7522C /* Source.json */,
 				422740F62C3ECFD600E7522C /* ModelData.swift */,
 				422740EC2C3ECCF900E7522C /* Model.swift */,
 			);
@@ -107,6 +109,13 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		23ABD80D2CDD1347009868C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		422740642C3BF4DC00E7522C = {
@@ -132,14 +141,12 @@
 		4227406F2C3BF4DC00E7522C /* Relayance */ = {
 			isa = PBXGroup;
 			children = (
-				23ABD80C2CDD0CE9009868C6 /* ViewModel */,
-				23ABD80B2CDD0CDC009868C6 /* View */,
 				23ABD80A2CDD0CC2009868C6 /* Model */,
-				422740EE2C3ECD1500E7522C /* DateExtension.swift */,
+				23ABD80B2CDD0CDC009868C6 /* View */,
 				422740702C3BF4DC00E7522C /* RelayanceApp.swift */,
+				23ABD80C2CDD0CE9009868C6 /* ViewModel */,
 				422740742C3BF4DD00E7522C /* Assets.xcassets */,
 				422740762C3BF4DD00E7522C /* Preview Content */,
-				422740F82C3ED02400E7522C /* Source.json */,
 			);
 			path = Relayance;
 			sourceTree = "<group>";
@@ -155,6 +162,7 @@
 		422740802C3BF4DD00E7522C /* RelayanceTests */ = {
 			isa = PBXGroup;
 			children = (
+				23ABD80D2CDD1347009868C6 /* Model */,
 				422740812C3BF4DD00E7522C /* RelayanceTests.swift */,
 			);
 			path = RelayanceTests;
