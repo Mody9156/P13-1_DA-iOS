@@ -29,12 +29,9 @@ final class ClientTests: XCTestCase {
     }
     
     func testClientInitialization_WithInValidData_ContainsExpectedClients(){
-        //Given
-        let nom  = ""
-        let email = ""
-        let dateCreationString = ""
+      
         //When
-        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let client = Client.stubClientWithEmptyData()
         
         //Then
         XCTAssertTrue(client.nom.isEmpty)
