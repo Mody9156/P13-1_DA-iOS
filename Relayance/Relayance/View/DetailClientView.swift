@@ -29,7 +29,7 @@ struct DetailClientView: View {
             Spacer()
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Supprimer") {
                     // suppression
                     self.presentationMode.wrappedValue.dismiss()

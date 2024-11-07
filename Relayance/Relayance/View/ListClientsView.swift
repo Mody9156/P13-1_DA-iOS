@@ -23,7 +23,7 @@ struct ListClientsView: View {
             }
             .navigationTitle("Liste des clients")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Ajouter un client") {
                         showModal.toggle()
                     }
