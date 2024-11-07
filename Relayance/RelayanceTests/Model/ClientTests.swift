@@ -58,6 +58,19 @@ final class ClientTests: XCTestCase {
         
     }
     
-    
+    func testAddNewClient_WithValidData_AddsClientFailure(){
+        
+        //Given
+        let newName = ""
+        let newEmail = ""
+        
+        //When
+        let creerNouveauClient = Client.creerNouveauClient(nom: newName, email: newEmail)
+        
+        //Then
+        XCTAssertTrue(creerNouveauClient.nom.isEmpty)
+        XCTAssertTrue(creerNouveauClient.email.isEmpty)
+        
+    }
     
 }
