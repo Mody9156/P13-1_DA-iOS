@@ -10,7 +10,6 @@ import XCTest
 
 final class ClientTests: XCTestCase {
     
-    
     func testClientInitialization_WithValidData_ContainsExpectedClients(){
         //Given
         let nom  = "Malala Yousafzai"
@@ -33,7 +32,6 @@ final class ClientTests: XCTestCase {
         let nom  = ""
         let email = ""
         let dateCreationString = ""
-        let dateCreation = Date.now
         //When
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
         
@@ -55,7 +53,7 @@ final class ClientTests: XCTestCase {
         //Then
         XCTAssertEqual(creerNouveauClient.nom, newName)
         XCTAssertEqual(creerNouveauClient.email, newEmail)
-        
+         
     }
     
     func testAddNewClient_WithValidData_AddsClientFailure(){
@@ -70,7 +68,39 @@ final class ClientTests: XCTestCase {
         //Then
         XCTAssertTrue(creerNouveauClient.nom.isEmpty)
         XCTAssertTrue(creerNouveauClient.email.isEmpty)
+        XCTAssertNotNil(creerNouveauClient.formatDateVersString())
+    }
+    
+    func testClientStatus_WhenNotNew_ClientIsNotNew(){
+        //Given
+        let nom  = "Malala Yousafzai"
+        let email = "malala.yousafzai@example.com"
+        let dateCreationString = "2022-03-10T10:45:00Z"
+        var dateCreation: Date {
+            Date.dateFromString(dateCreationString) ?? Date.now
+        }
+        //When
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
         
+        let estNouveauClient = client.estNouveauClient()
+        
+        XCTAssertFalse(estNouveauClient)
+    }
+    
+    func testClientInitialization_WhenNew_ClientIsMarkedAsNew(){
+        //Given
+        let nom  = "Jordan J.Mick"
+        let email = "Jordan.Mick_1@example.com"
+        let dateCreationString = "2023-06-10T10:35:00Z"
+        var dateCreation: Date {
+            Date.dateFromString(dateCreationString) ?? Date.now
+        }
+        //When
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        
+        let estNouveauClient = client.estNouveauClient()
+        
+        XCTAssertTrue(estNouveauClient)
     }
     
 }

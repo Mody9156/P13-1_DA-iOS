@@ -41,29 +41,25 @@
             </BuildableReference>
             <SelectedTests>
                <Test
+                  Identifier = "ClientTests/testAddNewClient_WithValidData_AddsClientFailure()">
+               </Test>
+               <Test
+                  Identifier = "ClientTests/testAddNewClient_WithValidData_AddsClientSuccessfully()">
+               </Test>
+               <Test
+                  Identifier = "ClientTests/testClientInitialization_WhenNew_ClientIsMarkedAsNew()">
+               </Test>
+               <Test
+                  Identifier = "ClientTests/testClientInitialization_WhenNew_ClientIsMarkedAsNotNew()">
+               </Test>
+               <Test
+                  Identifier = "ClientTests/testClientInitialization_WithInValidData_ContainsExpectedClients()">
+               </Test>
+               <Test
                   Identifier = "ClientTests/testClientInitialization_WithValidData_ContainsExpectedClients()">
                </Test>
-            </SelectedTests>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "422740862C3BF4DD00E7522C"
-               BuildableName = "RelayanceUITests.xctest"
-               BlueprintName = "RelayanceUITests"
-               ReferencedContainer = "container:Relayance.xcodeproj">
-            </BuildableReference>
-            <SelectedTests>
                <Test
-                  Identifier = "RelayanceUITests/testExample()">
-               </Test>
-               <Test
-                  Identifier = "RelayanceUITests/testLaunchPerformance()">
-               </Test>
-               <Test
-                  Identifier = "RelayanceUITestsLaunchTests/testLaunch()">
+                  Identifier = "ClientTests/testClientStatus_WhenNotNew_ClientIsNotNew()">
                </Test>
             </SelectedTests>
          </TestableReference>
