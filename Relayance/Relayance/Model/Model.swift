@@ -26,7 +26,7 @@ struct Client: Codable, Hashable {
         self.nom = nom
         self.email = email
         self.dateCreationString = dateCreationString
-    }
+    }//1
     
     /// Fonctions
     static func creerNouveauClient(nom: String, email: String) -> Client {
@@ -34,7 +34,7 @@ struct Client: Codable, Hashable {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
-    }
+    }//2
     
     func estNouveauClient() -> Bool {
         let aujourdhui = Date.now
@@ -46,16 +46,16 @@ struct Client: Codable, Hashable {
             return false
         }
         return true
-    }
+    }//3
     
     func clientExiste(clientsList: [Client]) -> Bool {
         if clientsList.contains(where: { $0 == self }) {
             return true
         }
         return false
-    }
+    }//4
     
     func formatDateVersString() -> String {
         return Date.stringFromDate(self.dateCreation) ?? self.dateCreationString
-    }
+    }//5
 }

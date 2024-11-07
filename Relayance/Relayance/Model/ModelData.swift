@@ -28,5 +28,5 @@ struct ModelData {
         } catch {
             fatalError("Impossible de parser \(nomFichier) en tant que \(T.self):\n\(error)")
         }
-    }
+    }//6
 }
