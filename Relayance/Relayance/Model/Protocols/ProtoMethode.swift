@@ -8,5 +8,6 @@
 import Foundation
 
 protocol  ProtoMethode {
-    
+    static func creerNouveauClient(nom: String, email: String) -> Client
+
 }
