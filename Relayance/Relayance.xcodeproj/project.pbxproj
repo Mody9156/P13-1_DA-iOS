@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23375A382CDD4F3B0089E1E2 /* ClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23375A372CDD4F3B0089E1E2 /* ClientStub.swift */; };
 		23ABD80F2CDD1373009868C6 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ABD80E2CDD1373009868C6 /* ClientTests.swift */; };
+		23FB15392CDE06AE00B3D797 /* ProtoMethode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */; };
 		422740712C3BF4DC00E7522C /* RelayanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422740702C3BF4DC00E7522C /* RelayanceApp.swift */; };
 		422740752C3BF4DD00E7522C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422740742C3BF4DD00E7522C /* Assets.xcassets */; };
 		422740782C3BF4DD00E7522C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422740772C3BF4DD00E7522C /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		23375A372CDD4F3B0089E1E2 /* ClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStub.swift; sourceTree = "<group>"; };
 		23ABD80E2CDD1373009868C6 /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
+		23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoMethode.swift; sourceTree = "<group>"; };
 		4227406D2C3BF4DC00E7522C /* Relayance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relayance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422740702C3BF4DC00E7522C /* RelayanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayanceApp.swift; sourceTree = "<group>"; };
 		422740742C3BF4DD00E7522C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		23FB15372CDE035700B3D797 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				422740FD2C3ED18D00E7522C /* AjoutClientView.swift in Sources */,
 				422740712C3BF4DC00E7522C /* RelayanceApp.swift in Sources */,
 				422740F72C3ECFD600E7522C /* ModelData.swift in Sources */,
+				23FB15392CDE06AE00B3D797 /* ProtoMethode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
