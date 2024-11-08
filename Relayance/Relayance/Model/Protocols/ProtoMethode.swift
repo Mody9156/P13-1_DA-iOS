@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol  ProtoMethode {
+protocol ProtoMethode {
     static func creerNouveauClient(nom: String, email: String) -> Client
     func estNouveauClient() -> Bool
     func clientExiste(clientsList: [Client]) -> Bool 
