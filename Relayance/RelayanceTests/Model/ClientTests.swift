@@ -65,14 +65,14 @@ final class ClientTests: XCTestCase {
         let email = "Rodrigue@gmail.com"
         let createdDateWithToDay = createdDateWithToDay()
         let dateCreationString = createdDateWithToDay
-        let creerNouveauClient = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
         let toDay = Date.now
         
         //when
-        let estNouveauClient = creerNouveauClient.estNouveauClient()
-        let test1 = toDay.getDay() != creerNouveauClient.dateCreation.getDay()
-        let test2 = toDay.getMonth() != creerNouveauClient.dateCreation.getMonth()
-        let test3 = toDay.getYear() != creerNouveauClient.dateCreation.getYear()
+        let estNouveauClient = client.estNouveauClient()
+        let test1 = toDay.getDay() != client.dateCreation.getDay()
+        let test2 = toDay.getMonth() != client.dateCreation.getMonth()
+        let test3 = toDay.getYear() != client.dateCreation.getYear()
 
         //then
         XCTAssertEqual(estNouveauClient,true)
@@ -83,16 +83,37 @@ final class ClientTests: XCTestCase {
         let nom = "James"
         let email = "Rodrigue@gmail.com"
         let dateCreationString = "2023-01-07T16:02:42.000Z"
-        let creerNouveauClient = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
         let toDay = Date.now
         
         //when
-        let estNouveauClient = creerNouveauClient.estNouveauClient()
-        let test1 = toDay.getDay() != creerNouveauClient.dateCreation.getDay()
-        let test2 = toDay.getMonth() != creerNouveauClient.dateCreation.getMonth()
-        let test3 = toDay.getYear() != creerNouveauClient.dateCreation.getYear()
+        let estNouveauClient = client.estNouveauClient()
+        let test1 = toDay.getDay() != client.dateCreation.getDay()
+        let test2 = toDay.getMonth() != client.dateCreation.getMonth()
+        let test3 = toDay.getYear() != client.dateCreation.getYear()
 
         //then
         XCTAssertEqual(estNouveauClient,false)
+    }
+    
+    
+    func testClientExists_WhenClientExists_ShouldReturnTrue(){
+        //Given
+        let nom = "James"
+        let email = "Rodrigue@gmail.com"
+        let dateCreationString = "2023-01-07T16:02:42.000Z"
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let list = [
+                Client(nom: "Alice Dupont", email: "alice.dupont@example.com", dateCreationString: "2023-11-07T12:00:00.000Z"),
+                Client(nom: "Bob Martin", email: "bob.martin@example.com", dateCreationString: "2023-12-01T10:00:00.000Z"),
+                Client(nom: "Charlie Brown", email: "charlie.brown@example.com", dateCreationString: "2023-10-15T15:00:00.000Z")
+            ]
+        
+        //When
+        let clientExiste = client.clientExiste(clientsList: list)
+        
+        //Then
+        XCTAssertEqual(clientExiste, true)
+        
     }
 }
