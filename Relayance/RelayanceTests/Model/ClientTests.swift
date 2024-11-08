@@ -10,13 +10,25 @@ import XCTest
 
 final class ClientTests: XCTestCase {
    
+    func createdDateWithToDay() -> String {
+        let calendar  = Calendar.current
+        let now = Date()
+        
+        let composants = calendar.dateComponents([.year,.month,.day], from: now)
+        
+        let newDate = calendar.date(from: composants)!
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let dateString = dateFormatter.string(from: newDate)
+         
+        return dateString
+    }
    
     func testCreerNouveauClient_CreationReussie(){
         //Given
         let nom = "Nelson"
-        let email = "Nelson_exemple@gmail.com"
-        let dateCreationString = "2023-11-07T12:00:00Z"
-        
+        let email = "Nelson_exemple@gmail.com"        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                 
@@ -35,34 +47,52 @@ final class ClientTests: XCTestCase {
         //Given
         let nom = ""
         let email = ""
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                 
         //When
         let creerNouveauClient = Client.creerNouveauClient(nom: nom, email: email)
+        
         //Then
         XCTAssertTrue(creerNouveauClient.nom.isEmpty)
         XCTAssertTrue(creerNouveauClient.email.isEmpty)
         
     }
     
-    func testGivenNewClient_WhenRegistered_ThenClientIsRegistered(){
+    func testGivenDateIsToday_WhenGetDateIsSame_ReturnsTrue(){
         //Given
-        let nom = ""
-        let email = ""
-        let dateCreationString = "2023-11-07T12:00:00Z"
+        let nom = "James"
+        let email = "Rodrigue@gmail.com"
+        let createdDateWithToDay = createdDateWithToDay()
+        let dateCreationString = createdDateWithToDay
         let creerNouveauClient = Client(nom: nom, email: email, dateCreationString: dateCreationString)
         let toDay = Date.now
-
+        
         //when
         let estNouveauClient = creerNouveauClient.estNouveauClient()
+        let test1 = toDay.getDay() != creerNouveauClient.dateCreation.getDay()
+        let test2 = toDay.getMonth() != creerNouveauClient.dateCreation.getMonth()
+        let test3 = toDay.getYear() != creerNouveauClient.dateCreation.getYear()
+
+        //then
+        XCTAssertEqual(estNouveauClient,true)
+    }
+    
+    func testGivenDateIsNotToday_WhenGetDateIsDifferent_ReturnsFalse(){
+        //Given
+        let nom = "James"
+        let email = "Rodrigue@gmail.com"
+        let dateCreationString = "2023-01-07T16:02:42.000Z"
+        let creerNouveauClient = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let toDay = Date.now
         
+        //when
+        let estNouveauClient = creerNouveauClient.estNouveauClient()
+        let test1 = toDay.getDay() != creerNouveauClient.dateCreation.getDay()
+        let test2 = toDay.getMonth() != creerNouveauClient.dateCreation.getMonth()
+        let test3 = toDay.getYear() != creerNouveauClient.dateCreation.getYear()
+
         //then
         XCTAssertEqual(estNouveauClient,false)
-        XCTAssertEqual(toDay.getDay(), creerNouveauClient.dateCreation.getDay())
-        XCTAssertEqual(toDay.getMonth(), creerNouveauClient.dateCreation.getMonth())
-        XCTAssertEqual(toDay.getYear(), creerNouveauClient.dateCreation.getYear())
-
     }
 }
