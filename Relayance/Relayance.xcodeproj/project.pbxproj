@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23375A382CDD4F3B0089E1E2 /* ClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23375A372CDD4F3B0089E1E2 /* ClientStub.swift */; };
 		23ABD80F2CDD1373009868C6 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ABD80E2CDD1373009868C6 /* ClientTests.swift */; };
+		23C8D1782CDE294300D9A08F /* ClientManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */; };
 		23FB15392CDE06AE00B3D797 /* ProtoMethode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */; };
 		422740712C3BF4DC00E7522C /* RelayanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422740702C3BF4DC00E7522C /* RelayanceApp.swift */; };
 		422740752C3BF4DD00E7522C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422740742C3BF4DD00E7522C /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		23375A372CDD4F3B0089E1E2 /* ClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStub.swift; sourceTree = "<group>"; };
 		23ABD80E2CDD1373009868C6 /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
+		23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManagementViewModel.swift; sourceTree = "<group>"; };
 		23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoMethode.swift; sourceTree = "<group>"; };
 		4227406D2C3BF4DC00E7522C /* Relayance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relayance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422740702C3BF4DC00E7522C /* RelayanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayanceApp.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		23ABD80C2CDD0CE9009868C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			files = (
 				422740F52C3ECFCA00E7522C /* ListClientsView.swift in Sources */,
 				422740ED2C3ECCF900E7522C /* Model.swift in Sources */,
+				23C8D1782CDE294300D9A08F /* ClientManagementViewModel.swift in Sources */,
 				422740FB2C3ED0EE00E7522C /* DetailClientView.swift in Sources */,
 				422740EF2C3ECD1500E7522C /* DateExtension.swift in Sources */,
 				422740FD2C3ED18D00E7522C /* AjoutClientView.swift in Sources */,
