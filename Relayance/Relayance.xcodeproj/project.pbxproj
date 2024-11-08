@@ -77,6 +77,7 @@
 		23ABD80A2CDD0CC2009868C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				23FB15372CDE035700B3D797 /* Protocols */,
 				422740EE2C3ECD1500E7522C /* DateExtension.swift */,
 				422740F82C3ED02400E7522C /* Source.json */,
 				422740F62C3ECFD600E7522C /* ModelData.swift */,
@@ -108,6 +109,13 @@
 				23ABD80E2CDD1373009868C6 /* ClientTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		23FB15372CDE035700B3D797 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		422740642C3BF4DC00E7522C = {
