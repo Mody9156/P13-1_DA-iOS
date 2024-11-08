@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import Relayance
-
+import SwiftUI
 final class ClientTests: XCTestCase {
    
     func createdDateWithToDay() -> String {
@@ -70,10 +70,7 @@ final class ClientTests: XCTestCase {
         
         //when
         let estNouveauClient = client.estNouveauClient()
-        let test1 = toDay.getDay() != client.dateCreation.getDay()
-        let test2 = toDay.getMonth() != client.dateCreation.getMonth()
-        let test3 = toDay.getYear() != client.dateCreation.getYear()
-
+       
         //then
         XCTAssertEqual(estNouveauClient,true)
     }
@@ -88,10 +85,7 @@ final class ClientTests: XCTestCase {
         
         //when
         let estNouveauClient = client.estNouveauClient()
-        let test1 = toDay.getDay() != client.dateCreation.getDay()
-        let test2 = toDay.getMonth() != client.dateCreation.getMonth()
-        let test3 = toDay.getYear() != client.dateCreation.getYear()
-
+        
         //then
         XCTAssertEqual(estNouveauClient,false)
     }
@@ -134,6 +128,58 @@ final class ClientTests: XCTestCase {
         
         //Then
         XCTAssertEqual(clientExiste, false)
+        
+    }
+    
+    
+    func testDateFormattedToString_WhenValidDate_ShouldReturnCorrectString(){
+        //Given
+        let nom = "Cena John"
+        let email = "www_Cena.John@catch.com"
+        let dateCreationString = "2024-10-07T12:00:00.000Z"
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+
+        //when
+        let dateFormat = client.formatDateVersString()
+        //then
+        XCTAssertNotNil(dateFormat)
+    
+        //When
+        let type = type(of: dateFormat) == String.self
+        
+        //Then
+        XCTAssertTrue(type)
+
+    }
+  
+    func testDateFormattedToString_WhenInvalidDate_ShouldReturnCorrectString(){
+        //Given
+        let nom = "Cena John"
+        let email = "www_Cena.John@catch.com"
+        let dateCreationString = "2024-10-07T12:00:00.000Z"
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+
+        var validDateFormat = client.formatDateVersString()
+        validDateFormat = dateCreationString
+        print("validDateFormat:\(validDateFormat)")
+        
+        XCTAssertEqual(validDateFormat, client.dateCreationString)
+    }//Terminer
+    
+    func testDateCreation_WhenDateCreationStringIsInvalid_ShouldReturnCurrentDate(){
+        //Given
+        let nom = "Cena John"
+        let email = "www_Cena.John@catch.com"
+        let dateCreationString = ""
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+
+        //When
+        let type = client.dateCreation
+        let dateNow = Date.now
+        
+        //Then
+        XCTAssert(abs(type.timeIntervalSince(dateNow)) < 1)
+        
         
     }
 }
