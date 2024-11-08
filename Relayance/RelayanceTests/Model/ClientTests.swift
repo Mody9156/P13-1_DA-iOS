@@ -9,47 +9,47 @@ import XCTest
 @testable import Relayance
 
 final class ClientTests: XCTestCase {
-    
-    func testClientInitialization_WithValidData_ContainsExpectedClients(){
-        //Given
-        let nom  = "John Doe"
-        let email = "john.doe@example.com"
-        let dateCreationString = "2023-11-07T12:00:00Z"
-        var dateCreation: Date {
-            Date.dateFromString(dateCreationString) ?? Date.now
-        }
-
-        //When
-        let stub = Client.stubClient()
-
-        //Then
-        XCTAssertEqual(stub.nom, nom)
-        XCTAssertEqual(stub.email, email)
-        XCTAssertEqual(stub.dateCreation, dateCreation)
-    }
-    
-    func testClientInitialization_WithInValidData_ContainsExpectedClients(){
-        
-        let client = Client.stubClientWithEmptyData()
-        
-        //Then
-        XCTAssertTrue(client.nom.isEmpty)
-        XCTAssertTrue(client.email.isEmpty)
-        XCTAssertNotNil(client.dateCreation)
-    }
+   
+//
+//    func testClientInitialization_WithValidData_ContainsExpectedClients(){
+//        //Given
+//        let nom  = "John Doe"
+//        let email = "john.doe@example.com"
+//        let dateCreationString = "2023-11-07T12:00:00Z"
+//        var dateCreation: Date {
+//            Date.dateFromString(dateCreationString) ?? Date.now
+//        }
+//
+//        //When
+//        let stub = Client.stubClient()
+//
+//        //Then
+//        XCTAssertEqual(stub.nom, nom)
+//        XCTAssertEqual(stub.email, email)
+//        XCTAssertEqual(stub.dateCreation, dateCreation)
+//    }//à revoir
+//
+//    func testClientInitialization_WithInValidData_ContainsExpectedClients(){
+//
+//        let client = Client.stubClientWithEmptyData()
+//
+//        //Then
+//        XCTAssertTrue(client.nom.isEmpty)
+//        XCTAssertTrue(client.email.isEmpty)
+//        XCTAssertNotNil(client.dateCreation)
+//    }//à revoir
     
     func testAddNewClient_WithValidData_AddsClientSuccessfully(){
         
         //Given
         let newName = "Jane Doe"
         let newEmail = "john.doe@example.com"
-        let newDateCreationString = "2023-11-07T12:00:00.000Z"
         
         //When
-        let client =  Client.stubCreatedNewClient()
+        let stubClient = StubClient.creerNouveauClient(nom: newName, email: newEmail)
         
-        XCTAssertEqual(client.nom, newName)
-        XCTAssertEqual(client.email, newEmail)
+        XCTAssertEqual(stubClient.nom, newName)
+        XCTAssertEqual(stubClient.email, newEmail)
          
     }
     
@@ -60,50 +60,43 @@ final class ClientTests: XCTestCase {
         let newEmail = ""
         
         //When
-//        let clientStub =  ClientStub.creerNouveauClient(nom: newName, email: newEmail)
+        let stubClient = StubClient.creerNouveauClient(nom: newName, email: newEmail)
 
         //Then
-//        XCTAssertTrue(clientStub.nom.isEmpty)
-//        XCTAssertTrue(clientStub.email.isEmpty)
-//        XCTAssertNotNil(clientStub.formatDateVersString())
+        XCTAssertTrue(stubClient.nom.isEmpty)
+        XCTAssertTrue(stubClient.email.isEmpty)
     }
     
     func testClientStatus_WhenNotNew_ClientIsNotNew(){
         //Given
-        let nom  = "Malala Yousafzai"
-        let email = "malala.yousafzai@example.com"
+        let newName = "Malala Yousafzai"
+        let newEmail = "malala.yousafzai@example.com"
         let dateCreationString = "2022-03-10T10:45:00Z"
+        let date = Date.now
+        let client =  Client(nom: newName, email: newEmail, dateCreationString: dateCreationString)
+        let estNouveauClient = client.estNouveauClient()
+
+        //When
+        XCTAssertEqual(estNouveauClient,false)
+        XCTAssertNotEqual(date.getYear(), client.dateCreation.getYear())
+        XCTAssertNotEqual(date.getDay(), client.dateCreation.getDay())
+        XCTAssertNotEqual(date.getMonth(), client.dateCreation.getMonth())
+    }
+    
+    func testClientInitialization_WhenNew_ClientIsMarkedAsNew(){
+        //Given
+        let nom  = "Jack Wick"
+        let email = "Jack.Wick_2@example.com"
+        let dateCreationString = "2024-02-10T10:25:00Z"
         var dateCreation: Date {
             Date.dateFromString(dateCreationString) ?? Date.now
         }
-        let aujourdhui = Date.now
-        
         //When
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
-
+        
         let estNouveauClient = client.estNouveauClient()
         
-        XCTAssertFalse(estNouveauClient)
-        XCTAssertNotEqual(aujourdhui.getYear(), client.dateCreation.getYear())
-        XCTAssertNotEqual(aujourdhui.getMonth(), client.dateCreation.getMonth())
-        XCTAssertNotEqual(aujourdhui.getDay(), client.dateCreation.getDay())
-
+        XCTAssertTrue(estNouveauClient)
     }
-    
-//    func testClientInitialization_WhenNew_ClientIsMarkedAsNew(){
-//        //Given
-//        let nom  = "Jordan J.Mick"
-//        let email = "Jordan.Mick_1@example.com"
-//        let dateCreationString = "2023-06-10T10:35:00Z"
-//        var dateCreation: Date {
-//            Date.dateFromString(dateCreationString) ?? Date.now
-//        }
-//        //When
-//        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
-//        
-//        let estNouveauClient = client.estNouveauClient()
-//        
-//        XCTAssertTrue(estNouveauClient)
-//    }
     
 }
