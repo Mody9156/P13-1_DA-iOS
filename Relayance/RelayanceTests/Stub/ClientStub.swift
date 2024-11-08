@@ -54,7 +54,7 @@ final class StubClient : ProtoMethode {
     static func creerNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-            let dateCreationString = dateFormatter.string(from: Date())
+        let dateCreationString = dateFormatter.string(from: Date.now)
             
         return Client(nom: nom, email: email, dateCreationString: dateCreationString)
     }
