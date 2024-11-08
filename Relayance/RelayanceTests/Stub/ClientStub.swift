@@ -34,18 +34,18 @@ extension Client {
 }
 
 
-class StubClient : ProtoMethode {
+final class StubClient : ProtoMethode {
     
     var featureOneEnabled = false
-    var email : String?
-    var nom : String?
+    var email : String
+    var nom : String
     var dateCreationString : String
     
     var dateCreation: Date {
         Date.dateFromString(dateCreationString) ?? Date.now
     }
     
-    init(nom: String?, email: String?, dateCreationString: String) {
+    init(nom: String, email: String, dateCreationString: String) {
            self.nom = nom
            self.email = email
            self.dateCreationString = dateCreationString
@@ -63,12 +63,9 @@ class StubClient : ProtoMethode {
         let aujourdhui = Date.now
         let dateCreation = self.dateCreation
         
-        if aujourdhui.getYear() != dateCreation.getYear() ||
-            aujourdhui.getMonth() != dateCreation.getMonth() ||
-            aujourdhui.getDay() != dateCreation.getDay() {
-            return false
-        }
-        return true
+        return aujourdhui.getYear() == dateCreation.getYear() &&
+                      aujourdhui.getMonth() == dateCreation.getMonth() &&
+                      aujourdhui.getDay() == dateCreation.getDay()
     }
     
     func clientExiste(clientsList: [Relayance.Client]) -> Bool {

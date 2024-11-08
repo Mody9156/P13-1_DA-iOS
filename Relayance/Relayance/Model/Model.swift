@@ -10,7 +10,7 @@ import Foundation
 struct Client: Codable, Hashable, ProtoMethode {
     var nom: String
     var email: String
-    private var dateCreationString: String
+    var dateCreationString: String
     var dateCreation: Date {
         Date.dateFromString(dateCreationString) ?? Date.now
     }

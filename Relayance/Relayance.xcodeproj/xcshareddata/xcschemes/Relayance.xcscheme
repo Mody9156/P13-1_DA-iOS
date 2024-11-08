@@ -39,29 +39,6 @@
                BlueprintName = "RelayanceTests"
                ReferencedContainer = "container:Relayance.xcodeproj">
             </BuildableReference>
-            <SelectedTests>
-               <Test
-                  Identifier = "ClientTests/testAddNewClient_WithValidData_AddsClientFailure()">
-               </Test>
-               <Test
-                  Identifier = "ClientTests/testAddNewClient_WithValidData_AddsClientSuccessfully()">
-               </Test>
-               <Test
-                  Identifier = "ClientTests/testClientInitialization_WhenNew_ClientIsMarkedAsNew()">
-               </Test>
-               <Test
-                  Identifier = "ClientTests/testClientInitialization_WhenNew_ClientIsMarkedAsNotNew()">
-               </Test>
-               <Test
-                  Identifier = "ClientTests/testClientInitialization_WithInValidData_ContainsExpectedClients()">
-               </Test>
-               <Test
-                  Identifier = "ClientTests/testClientInitialization_WithValidData_ContainsExpectedClients()">
-               </Test>
-               <Test
-                  Identifier = "ClientTests/testClientStatus_WhenNotNew_ClientIsNotNew()">
-               </Test>
-            </SelectedTests>
          </TestableReference>
       </Testables>
    </TestAction>
