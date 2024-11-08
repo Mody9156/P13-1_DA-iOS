@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Client: Codable, Hashable, ProtoMethode {
+struct Client: Codable, Hashable {
     var nom: String
     var email: String
     private var dateCreationString: String
