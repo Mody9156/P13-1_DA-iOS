@@ -99,9 +99,9 @@ final class ClientTests: XCTestCase {
     
     func testClientExists_WhenClientExists_ShouldReturnTrue(){
         //Given
-        let nom = "James"
-        let email = "Rodrigue@gmail.com"
-        let dateCreationString = "2023-01-07T16:02:42.000Z"
+        let nom = "Alice Dupont"
+        let email = "alice.dupont@example.com"
+        let dateCreationString = "2023-11-07T12:00:00.000Z"
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
         let list = [
                 Client(nom: "Alice Dupont", email: "alice.dupont@example.com", dateCreationString: "2023-11-07T12:00:00.000Z"),
@@ -114,6 +114,26 @@ final class ClientTests: XCTestCase {
         
         //Then
         XCTAssertEqual(clientExiste, true)
+        
+    }
+    
+    func testClientExists_WhenClientDoesNotExist_ShouldReturnFalse(){
+        //Given
+        let nom = "Cena John"
+        let email = "www_Cena.John@catch.com"
+        let dateCreationString = "2024-10-07T12:00:00.000Z"
+        let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let list = [
+                Client(nom: "Alice Dupont", email: "alice.dupont@example.com", dateCreationString: "2023-11-07T12:00:00.000Z"),
+                Client(nom: "Bob Martin", email: "bob.martin@example.com", dateCreationString: "2023-12-01T10:00:00.000Z"),
+                Client(nom: "Charlie Brown", email: "charlie.brown@example.com", dateCreationString: "2023-10-15T15:00:00.000Z")
+            ]
+        
+        //When
+        let clientExiste = client.clientExiste(clientsList: list)
+        
+        //Then
+        XCTAssertEqual(clientExiste, false)
         
     }
 }
