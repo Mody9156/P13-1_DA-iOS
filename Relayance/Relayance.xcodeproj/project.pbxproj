@@ -78,6 +78,13 @@
 			path = Stub;
 			sourceTree = "<group>";
 		};
+		23A0B19F2CE3551400634D8E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		23ABD80A2CDD0CC2009868C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +173,7 @@
 		422740802C3BF4DD00E7522C /* RelayanceTests */ = {
 			isa = PBXGroup;
 			children = (
+				23A0B19F2CE3551400634D8E /* ViewModel */,
 				23375A362CDD4ED30089E1E2 /* Stub */,
 				23ABD80D2CDD1347009868C6 /* Model */,
 			);
