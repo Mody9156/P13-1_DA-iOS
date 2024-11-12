@@ -39,11 +39,15 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
     }
     
     func removeClientFromList(nom:String, email:String) throws  {
-        
-        if let index = clientsList.firstIndex(of: client){
+        if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
             clientsList.remove(at: index)
+            print("Client \(nom) supprimé avec succès.")
+
+        }else{
+            throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
+
         }
-        
+       
     }
     
     func estNouveauClient() -> Bool {
