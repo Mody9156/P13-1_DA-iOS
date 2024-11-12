@@ -32,7 +32,9 @@ struct DetailClientView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Supprimer") {
                     // suppression
-                    clientManagementViewModel.removeClientFromList(nom: client.nom, email: client.email)
+                    Task{
+                        try  clientManagementViewModel.removeClientFromList(nom: client.nom, email: client.email)
+                    }
                     self.presentationMode.wrappedValue.dismiss()
                 }
                 .foregroundStyle(.red)
