@@ -11,7 +11,6 @@ class ClientManagementViewModel : ObservableObject {
     @Published var nom : String = ""
     @Published var email : String = ""
     let client : Client
-//    @Published var clientList: [Client] = []
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
 
     init(client : Client){
@@ -29,7 +28,12 @@ class ClientManagementViewModel : ObservableObject {
         let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
 
         if !clientsList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
-            clientsList.append(newClient)
+            if EmailRegex.isValidEmail(email){
+                clientsList.append(newClient)
+                print("super emailValid")
+            }else{
+                print("Veuillez vérifier votre adresse email")
+            }
         }
         return clientsList
     }

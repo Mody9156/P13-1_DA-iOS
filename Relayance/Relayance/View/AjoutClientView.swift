@@ -29,7 +29,7 @@ struct AjoutClientView: View {
                 Task{
                     try clientManagementViewModel.addClientToList(nom: nom, email: email)
                 }
-                dismissModal.toggle()
+                    dismissModal.toggle()
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
