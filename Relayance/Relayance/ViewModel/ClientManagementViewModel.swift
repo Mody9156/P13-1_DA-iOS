@@ -8,8 +8,13 @@
 import Foundation
 
 class ClientManagementViewModel : ObservableObject {
-
+    @Published var nom : String = ""
+    @Published var email : String = ""
+    let client : Client
     
+    init(client : Client){
+        self.client = client
+    }
     /// Fonctions
     static func creerNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
@@ -20,7 +25,7 @@ class ClientManagementViewModel : ObservableObject {
     
     func estNouveauClient() -> Bool {
         let aujourdhui = Date.now
-        let dateCreation = self.dateCreation
+        let dateCreation = client.dateCreation
         
         if aujourdhui.getYear() != dateCreation.getYear() ||
             aujourdhui.getMonth() != dateCreation.getMonth() ||
@@ -31,14 +36,12 @@ class ClientManagementViewModel : ObservableObject {
     }
     
     func clientExiste(clientsList: [Client]) -> Bool {
-        if clientsList.contains(where: { $0 == self }) {
-            return true
-        }
-        return false
+        return clientsList.contains(client)
+           
     }
     
     func formatDateVersString() -> String {
-        return Date.stringFromDate(self.dateCreation) ?? self.dateCreationString
+        return Date.stringFromDate(client.dateCreation) ?? client.dateCreationString
     }
     
 }
