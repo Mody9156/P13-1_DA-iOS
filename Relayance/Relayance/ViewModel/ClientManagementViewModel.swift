@@ -12,7 +12,7 @@ class ClientManagementViewModel : ObservableObject {
     @Published var email : String = ""
     let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
-
+    
     init(client : Client){
         self.client = client
     }
@@ -26,7 +26,7 @@ class ClientManagementViewModel : ObservableObject {
     
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
-
+        
         if !clientsList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
             if EmailRegex.isValidEmail(email){
                 clientsList.append(newClient)
@@ -52,11 +52,9 @@ class ClientManagementViewModel : ObservableObject {
     
     func clientExiste(clientsList: [Client]) -> Bool {
         return clientsList.contains(client)
-           
     }
     
     func formatDateVersString() -> String {
         return Date.stringFromDate(client.dateCreation) ?? client.dateCreationString
     }
-    
 }

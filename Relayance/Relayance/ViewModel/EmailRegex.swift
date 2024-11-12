@@ -15,5 +15,4 @@ enum EmailRegex{
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
     return emailPredicate.evaluate(with: email)
     }
-        
 }

@@ -20,5 +20,5 @@ struct Client: Codable, Hashable {
         case email
         case dateCreationString = "date_creation"
     }
-    
+   
 }

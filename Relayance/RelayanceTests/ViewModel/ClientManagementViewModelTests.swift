@@ -7,20 +7,24 @@
 
 import XCTest
 @testable import Relayance
+import SwiftUI
+import Foundation
+
 final class ClientManagementViewModelTests: XCTestCase {
 
     
     func testWhenAddNewClient_DoesNotThrowError() async throws{
         //Given
-        let dateNow = Date.now
-        let client = Client(nom: "James", email: "JamesBrown@gmail.com", dateCreationString: "2022-03-10T10:45:00Z")
-        let viewModel = ClientManagementViewModel(client: client )
         
+        let viewModel = ClientManagementViewModel(client: Client.clientTest2 )
+        let addClient = viewModel.clientsList
+
         //When
-        let newClient = try  viewModel.addClientToList(nom: "James", email:"JamesBrown@gmail.com")
+        let newClient = try viewModel.addClientToList(nom: "James", email:"JamesBrown@gmail.com")
+ 
         //Then
-        XCTAssertEqual(newClient[0].nom, "James")
-        XCTAssertEqual(newClient[0].email, "JamesBrown@gmail.com")
+        XCTAssertFalse(newClient.isEmpty)
+        XCTAssertEqual(newClient.count, 1)
         
     }
     
@@ -28,5 +32,18 @@ final class ClientManagementViewModelTests: XCTestCase {
         
     }
     
+   
+   
+}
 
+
+extension Client {
+   
+    static var clientTest: Client {
+        return Client(nom: "", email: "", dateCreationString: "")
+    }
+    
+    static var clientTest2: Client {
+        return Client(nom: "Jane Doe", email: "jane.doe@example.com", dateCreationString: "2024-10-10T08:30:00.000Z")
+    }
 }

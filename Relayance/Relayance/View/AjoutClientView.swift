@@ -43,4 +43,3 @@ struct AjoutClientView: View {
         .padding()
     }
 }
-
