@@ -10,17 +10,17 @@ import XCTest
 final class ClientManagementViewModelTests: XCTestCase {
 
     
-    func testWhenAddNewClient_DoesntThorwError() async throws{
+    func testWhenAddNewClient_DoesNotThrowError() async throws{
         //Given
         let dateNow = Date.now
         let client = Client(nom: "James", email: "JamesBrown@gmail.com", dateCreationString: "2022-03-10T10:45:00Z")
         let viewModel = ClientManagementViewModel(client: client )
         
         //When
-        let newClient = try await viewModel.addNewClient()
+        let newClient = try await viewModel.addClientToList(nom: "James", email:"JamesBrown@gmail.com")
         //Then
-        XCTAssertEqual(newClient[1].nom, "James")
-        XCTAssertEqual(newClient[1].email, "JamesBrown@gmail.com")
+        XCTAssertEqual(newClient[0].nom, "James")
+        XCTAssertEqual(newClient[0].email, "JamesBrown@gmail.com")
         
     }
     
