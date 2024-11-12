@@ -11,7 +11,7 @@ import SwiftUI
 struct RelayanceApp: App {
     var body: some Scene {
         WindowGroup {
-            ListClientsView()
+            ListClientsView( clientManagementViewModel: ClientManagementViewModel(client: Client(nom: "", email: "", dateCreationString: "")))
         }
     }
 }

@@ -11,7 +11,8 @@ struct AjoutClientView: View {
     @Binding var dismissModal: Bool
     @State var nom: String = ""
     @State var email: String = ""
-    
+    @ObservedObject var clientManagementViewModel : ClientManagementViewModel
+
     var body: some View {
         VStack {
             Text("Ajouter un nouveau client")
