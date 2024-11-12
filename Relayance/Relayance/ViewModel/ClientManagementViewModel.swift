@@ -11,6 +11,7 @@ class ClientManagementViewModel : ObservableObject {
     @Published var nom : String = ""
     @Published var email : String = ""
     let client : Client
+    @Published var clientList: [Client] = []
     
     init(client : Client){
         self.client = client
@@ -25,9 +26,10 @@ class ClientManagementViewModel : ObservableObject {
     
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
-        var clientList : [Client] = []
-        clientList.append(newClient)
-        
+
+        if !clientList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
+            clientList.append(newClient)
+        }
         return clientList
     }
     
