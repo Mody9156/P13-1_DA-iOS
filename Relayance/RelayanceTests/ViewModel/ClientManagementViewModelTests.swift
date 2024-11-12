@@ -60,8 +60,8 @@ final class ClientManagementViewModelTests: XCTestCase {
         let removeClientFromList = try clientManagementViewModel.removeClientFromList(nom: nom, email:email)
         
         //Then
-        XCTAssertTrue(removeClientFromList.email.isEmpty)
-        XCTAssertTrue(removeClientFromList.nom.isEmpty)
+        XCTAssertNil(removeClientFromList)
+        XCTAssertNoThrow(removeClientFromList)
         
     }
     
