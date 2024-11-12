@@ -23,6 +23,16 @@ class ClientManagementViewModel : ObservableObject {
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
     }
     
+    func addClientToList(nom:String,email:String) throws -> [Client]{
+        let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
+        var clientList : [Client] = []
+        clientList.append(newClient)
+        return clientList
+        
+    }
+    
+    
+    
     func estNouveauClient() -> Bool {
         let aujourdhui = Date.now
         let dateCreation = client.dateCreation
@@ -34,6 +44,11 @@ class ClientManagementViewModel : ObservableObject {
         }
         return true
     }
+    
+    
+    
+    
+    
     
     func clientExiste(clientsList: [Client]) -> Bool {
         return clientsList.contains(client)
