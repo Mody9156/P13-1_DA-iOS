@@ -11,8 +11,9 @@ class ClientManagementViewModel : ObservableObject {
     @Published var nom : String = ""
     @Published var email : String = ""
     let client : Client
-    @Published var clientList: [Client] = []
-    
+//    @Published var clientList: [Client] = []
+    @Published var clientsList: [Client] = ModelData.chargement("Source.json")
+
     init(client : Client){
         self.client = client
     }
@@ -24,14 +25,14 @@ class ClientManagementViewModel : ObservableObject {
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
     }
     
-    func addClientToList(nom:String,email:String) throws -> [Client]{
-        let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
-
-        if !clientList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
-            clientList.append(newClient)
-        }
-        return clientList
-    }
+//    func addClientToList(nom:String,email:String) throws -> [Client]{
+//        let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
+//
+//        if !clientList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
+//            clientList.append(newClient)
+//        }
+//        return clientList
+//    }
     
     func estNouveauClient() -> Bool {
         let aujourdhui = Date.now
