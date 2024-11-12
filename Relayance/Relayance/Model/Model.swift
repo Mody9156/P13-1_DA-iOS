@@ -21,11 +21,4 @@ struct Client: Codable, Hashable {
         case dateCreationString = "date_creation"
     }
     
-    /// Constructeur
-    init(nom: String, email: String, dateCreationString: String) {
-        self.nom = nom
-        self.email = email
-        self.dateCreationString = dateCreationString
-    }
-    
 }

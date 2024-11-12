@@ -51,7 +51,7 @@ final class ClientTests: XCTestCase {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                 
         //When
-        let creerNouveauClient = Client.creerNouveauClient(nom: nom, email: email)
+        let creerNouveauClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
         
         //Then
         XCTAssertTrue(creerNouveauClient.nom.isEmpty)
@@ -66,10 +66,11 @@ final class ClientTests: XCTestCase {
         let createdDateWithToDay = createdDateWithToDay()
         let dateCreationString = createdDateWithToDay
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let clientManagementViewModel =  ClientManagementViewModel(client: client)
         let toDay = Date.now
         
         //when
-        let estNouveauClient = client.estNouveauClient()
+        let estNouveauClient = clientManagementViewModel.estNouveauClient()
        
         //then
         XCTAssertEqual(estNouveauClient,true)
@@ -81,10 +82,11 @@ final class ClientTests: XCTestCase {
         let email = "Rodrigue@gmail.com"
         let dateCreationString = "2023-01-07T16:02:42.000Z"
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let clientManagementViewModel =  ClientManagementViewModel(client: client)
         let toDay = Date.now
         
         //when
-        let estNouveauClient = client.estNouveauClient()
+        let estNouveauClient = clientManagementViewModel.estNouveauClient()
         
         //then
         XCTAssertEqual(estNouveauClient,false)
@@ -102,9 +104,10 @@ final class ClientTests: XCTestCase {
                 Client(nom: "Bob Martin", email: "bob.martin@example.com", dateCreationString: "2023-12-01T10:00:00.000Z"),
                 Client(nom: "Charlie Brown", email: "charlie.brown@example.com", dateCreationString: "2023-10-15T15:00:00.000Z")
             ]
-        
+        let clientManagementViewModel =  ClientManagementViewModel(client: client)
+
         //When
-        let clientExiste = client.clientExiste(clientsList: list)
+        let clientExiste = clientManagementViewModel.clientExiste(clientsList: list)
         
         //Then
         XCTAssertEqual(clientExiste, true)
@@ -122,9 +125,10 @@ final class ClientTests: XCTestCase {
                 Client(nom: "Bob Martin", email: "bob.martin@example.com", dateCreationString: "2023-12-01T10:00:00.000Z"),
                 Client(nom: "Charlie Brown", email: "charlie.brown@example.com", dateCreationString: "2023-10-15T15:00:00.000Z")
             ]
-        
+        let clientManagementViewModel =  ClientManagementViewModel(client: client)
+
         //When
-        let clientExiste = client.clientExiste(clientsList: list)
+        let clientExiste = clientManagementViewModel.clientExiste(clientsList: list)
         
         //Then
         XCTAssertEqual(clientExiste, false)
@@ -138,9 +142,10 @@ final class ClientTests: XCTestCase {
         let email = "www_Cena.John@catch.com"
         let dateCreationString = "2024-10-07T12:00:00.000Z"
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let clientManagementViewModel =  ClientManagementViewModel(client: client)
 
         //when
-        let dateFormat = client.formatDateVersString()
+        let dateFormat = clientManagementViewModel.formatDateVersString()
         //then
         XCTAssertNotNil(dateFormat)
     
@@ -158,8 +163,9 @@ final class ClientTests: XCTestCase {
         let email = "www_Cena.John@catch.com"
         let dateCreationString = "2024-10-07T12:00:00.000Z"
         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
+        let clientManagementViewModel =  ClientManagementViewModel(client: client)
 
-        var validDateFormat = client.formatDateVersString()
+        var validDateFormat = clientManagementViewModel.formatDateVersString()
         validDateFormat = dateCreationString
         print("validDateFormat:\(validDateFormat)")
         
