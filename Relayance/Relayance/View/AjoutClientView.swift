@@ -26,7 +26,9 @@ struct AjoutClientView: View {
                 .font(.title2)
             Button("Ajouter") {
                 //Ajout d'un client
-                clientManagementViewModel.addClientToList(nom: nom, email: email)
+                Task{
+                    try clientManagementViewModel.addClientToList(nom: nom, email: email)
+                }
                 dismissModal.toggle()
             }
             .padding(.horizontal, 50)

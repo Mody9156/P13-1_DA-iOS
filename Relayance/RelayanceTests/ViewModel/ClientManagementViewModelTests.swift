@@ -17,7 +17,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         let viewModel = ClientManagementViewModel(client: client )
         
         //When
-        let newClient = try await viewModel.addClientToList(nom: "James", email:"JamesBrown@gmail.com")
+        let newClient = try  viewModel.addClientToList(nom: "James", email:"JamesBrown@gmail.com")
         //Then
         XCTAssertEqual(newClient[0].nom, "James")
         XCTAssertEqual(newClient[0].email, "JamesBrown@gmail.com")

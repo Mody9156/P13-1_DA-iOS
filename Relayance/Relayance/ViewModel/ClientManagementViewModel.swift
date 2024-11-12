@@ -27,11 +27,9 @@ class ClientManagementViewModel : ObservableObject {
         let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
         var clientList : [Client] = []
         clientList.append(newClient)
-        return clientList
         
+        return clientList
     }
-    
-    
     
     func estNouveauClient() -> Bool {
         let aujourdhui = Date.now
