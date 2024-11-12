@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ProtoMethode {
-    static func creerNouveauClient(nom: String, email: String) -> Client
+    func addClientToList(nom: String, email: String) throws -> [Client]
     func estNouveauClient() -> Bool
-    func clientExiste(clientsList: [Client]) -> Bool 
+    func clientExiste(clientsList: [Client]) -> Bool
+    func formatDateVersString() -> String
 }

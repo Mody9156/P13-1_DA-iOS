@@ -10,6 +10,7 @@
 		23375A382CDD4F3B0089E1E2 /* ClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23375A372CDD4F3B0089E1E2 /* ClientStub.swift */; };
 		23A0B1A12CE355DA00634D8E /* ClientManagementViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */; };
 		23A0B1A32CE37A2300634D8E /* EmailRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0B1A22CE37A2200634D8E /* EmailRegex.swift */; };
+		23A0B1A62CE3AB1900634D8E /* ExtensionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0B1A52CE3AB1900634D8E /* ExtensionClient.swift */; };
 		23ABD80F2CDD1373009868C6 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ABD80E2CDD1373009868C6 /* ClientTests.swift */; };
 		23C8D1782CDE294300D9A08F /* ClientManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */; };
 		23FB15392CDE06AE00B3D797 /* ProtoMethode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */; };
@@ -39,6 +40,7 @@
 		23375A372CDD4F3B0089E1E2 /* ClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStub.swift; sourceTree = "<group>"; };
 		23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManagementViewModelTests.swift; sourceTree = "<group>"; };
 		23A0B1A22CE37A2200634D8E /* EmailRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegex.swift; sourceTree = "<group>"; };
+		23A0B1A52CE3AB1900634D8E /* ExtensionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionClient.swift; sourceTree = "<group>"; };
 		23ABD80E2CDD1373009868C6 /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManagementViewModel.swift; sourceTree = "<group>"; };
 		23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoMethode.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 				23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		23A0B1A42CE3AAF300634D8E /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				23A0B1A52CE3AB1900634D8E /* ExtensionClient.swift */,
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 		23ABD80A2CDD0CC2009868C6 /* Model */ = {
@@ -179,6 +189,7 @@
 		422740802C3BF4DD00E7522C /* RelayanceTests */ = {
 			isa = PBXGroup;
 			children = (
+				23A0B1A42CE3AAF300634D8E /* extension */,
 				23A0B19F2CE3551400634D8E /* ViewModel */,
 				23375A362CDD4ED30089E1E2 /* Stub */,
 				23ABD80D2CDD1347009868C6 /* Model */,
@@ -304,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23A0B1A62CE3AB1900634D8E /* ExtensionClient.swift in Sources */,
 				23375A382CDD4F3B0089E1E2 /* ClientStub.swift in Sources */,
 				23A0B1A12CE355DA00634D8E /* ClientManagementViewModelTests.swift in Sources */,
 				23ABD80F2CDD1373009868C6 /* ClientTests.swift in Sources */,

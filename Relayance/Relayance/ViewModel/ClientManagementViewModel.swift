@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ClientManagementViewModel : ObservableObject {
+class ClientManagementViewModel : ObservableObject, ProtoMethode {
     @Published var nom : String = ""
     @Published var email : String = ""
     let client : Client
@@ -36,6 +36,14 @@ class ClientManagementViewModel : ObservableObject {
             }
         }
         return clientsList
+    }
+    
+    func removeClientFromList(nom:String, email:String) throws  {
+        
+        if let index = clientsList.firstIndex(of: client){
+            clientsList.remove(at: index)
+        }
+        
     }
     
     func estNouveauClient() -> Bool {

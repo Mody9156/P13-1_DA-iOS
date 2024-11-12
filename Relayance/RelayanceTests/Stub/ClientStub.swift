@@ -29,48 +29,44 @@ extension Client {
         let fixedDateString = "2023-11-07T12:00:00.000Z"
 
         return Client(nom: "Jane Doe", email: "john.doe@example.com", dateCreationString: fixedDateString)
-        
     }
+    
 }
-
 
 final class StubClient : ProtoMethode {
     
-    var featureOneEnabled = false
-    var email : String
-    var nom : String
-    var dateCreationString : String
+    var mockClientsList: [Client]
+        
+        init(mockClientsList: [Client] = []) {
+            self.mockClientsList = mockClientsList
+        }
     
-    var dateCreation: Date {
-        Date.dateFromString(dateCreationString) ?? Date.now
-    }
-    
-    init(nom: String, email: String, dateCreationString: String) {
-           self.nom = nom
-           self.email = email
-           self.dateCreationString = dateCreationString
-       }
-    
-    static func creerNouveauClient(nom: String, email: String) -> Client {
-        let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        let dateCreationString = dateFormatter.string(from: Date.now)
-            
-        return Client(nom: nom, email: email, dateCreationString: dateCreationString)
-    }
     
     func estNouveauClient() -> Bool {
-        let aujourdhui = Date.now
-        let dateCreation = self.dateCreation
-        
-        return aujourdhui.getYear() == dateCreation.getYear() &&
-                      aujourdhui.getMonth() == dateCreation.getMonth() &&
-                      aujourdhui.getDay() == dateCreation.getDay()
+        true
     }
     
-    func clientExiste(clientsList: [Relayance.Client]) -> Bool {
-        return clientsList.contains { $0.email == self.email }
+    func clientExiste(clientsList: [Client]) -> Bool {
+        return clientsList.contains { $0.nom == "Jane Doe" && $0.email == "jane.doe@example.com" }
+
     }
     
+    func addClientToList(nom: String, email: String) throws -> [Client] {
+        let newClient = Client(nom: nom, email: email, dateCreationString: "2024-11-11T10:00:00.000Z")
+               
+               if !mockClientsList.contains(where: { $0.nom == newClient.nom && $0.email == newClient.email }) {
+                   if EmailRegex.isValidEmail(email) {
+                       mockClientsList.append(newClient)  // Ajoute le client à la liste simulée
+                   } else {
+                       throw NSError(domain: "InvalidEmail", code: 400, userInfo: [NSLocalizedDescriptionKey: "Email invalide."])
+                   }
+               }
+               return mockClientsList
+    }
     
+    func formatDateVersString() -> String {
+        return "2024-11-11T10:00:00.000Z"
+
+    }
+
 }
