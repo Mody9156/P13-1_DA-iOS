@@ -51,7 +51,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     }
    
     
-    func testWhenDeleteClient(){
+    func testWhenDeleteClient() throws {
         //Given
         let nom = "Bruce"
         let email = "JamesBrown_Step3gmail.com"
