@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23375A382CDD4F3B0089E1E2 /* ClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23375A372CDD4F3B0089E1E2 /* ClientStub.swift */; };
+		23A0B1A12CE355DA00634D8E /* ClientManagementViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */; };
 		23ABD80F2CDD1373009868C6 /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ABD80E2CDD1373009868C6 /* ClientTests.swift */; };
 		23C8D1782CDE294300D9A08F /* ClientManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */; };
 		23FB15392CDE06AE00B3D797 /* ProtoMethode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		23375A372CDD4F3B0089E1E2 /* ClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStub.swift; sourceTree = "<group>"; };
+		23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManagementViewModelTests.swift; sourceTree = "<group>"; };
 		23ABD80E2CDD1373009868C6 /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManagementViewModel.swift; sourceTree = "<group>"; };
 		23FB15382CDE06AE00B3D797 /* ProtoMethode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoMethode.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		23A0B19F2CE3551400634D8E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23375A382CDD4F3B0089E1E2 /* ClientStub.swift in Sources */,
+				23A0B1A12CE355DA00634D8E /* ClientManagementViewModelTests.swift in Sources */,
 				23ABD80F2CDD1373009868C6 /* ClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
