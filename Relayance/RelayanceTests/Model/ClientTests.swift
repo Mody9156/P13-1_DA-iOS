@@ -33,7 +33,7 @@ final class ClientTests: XCTestCase {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                 
         //When
-        let creerNouveauClient = Client.creerNouveauClient(nom: nom, email: email)
+        let creerNouveauClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
         
         //Then
         XCTAssertEqual(creerNouveauClient.nom, nom)
