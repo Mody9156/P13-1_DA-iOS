@@ -45,11 +45,6 @@ class ClientManagementViewModel : ObservableObject {
         return true
     }
     
-    
-    
-    
-    
-    
     func clientExiste(clientsList: [Client]) -> Bool {
         return clientsList.contains(client)
            
