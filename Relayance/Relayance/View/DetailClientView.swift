@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailClientView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var client: Client
-    
+    @ObservedObject var clientManagementViewModel : ClientManagementViewModel
     var body: some View {
         VStack {
             Image(systemName: "person.circle")
@@ -24,7 +24,7 @@ struct DetailClientView: View {
                 .padding()
             Text(client.email)
                 .font(.title3)
-            Text(client.formatDateVersString())
+            Text(clientManagementViewModel.formatDateVersString())
                 .font(.title3)
             Spacer()
         }
