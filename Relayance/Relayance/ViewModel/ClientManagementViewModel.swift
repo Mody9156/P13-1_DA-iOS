@@ -25,14 +25,14 @@ class ClientManagementViewModel : ObservableObject {
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
     }
     
-//    func addClientToList(nom:String,email:String) throws -> [Client]{
-//        let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
-//
-//        if !clientList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
-//            clientList.append(newClient)
-//        }
-//        return clientList
-//    }
+    func addClientToList(nom:String,email:String) throws -> [Client]{
+        let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
+
+        if !clientsList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
+            clientsList.append(newClient)
+        }
+        return clientsList
+    }
     
     func estNouveauClient() -> Bool {
         let aujourdhui = Date.now
