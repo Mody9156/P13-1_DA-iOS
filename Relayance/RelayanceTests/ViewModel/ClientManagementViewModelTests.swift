@@ -13,19 +13,20 @@ import Foundation
 final class ClientManagementViewModelTests: XCTestCase {
     
     var clientManagementViewModel : ClientManagementViewModel!
+    var initialNom : String!
+    var initialEmail : String!
     
     override func setUp() {
         super.setUp()
         var client = Client(nom: "", email: "", dateCreationString: "")
         self.clientManagementViewModel  = ClientManagementViewModel(client: client)
+        self.initialNom  = "John Doe"
+        self.initialEmail = "john.doe@example.com"
     }
    
     func testWhenAddNewClient_DoesNotThrowError() async throws{
         //Given
-        let initialNom = "John Doe"
-        let initialEmail = "john.doe@example.com"
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        let clientManagementViewModel = ClientManagementViewModel(client: Client(nom: "", email: "", dateCreationString: ""))
         clientManagementViewModel.clientsList = [initialClient]
         
         let nom = "Bruce"
@@ -43,10 +44,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     
     func testWhenEmailIsInvalid() throws {
         //Given
-        let initialNom = "John Doe"
-        let initialEmail = "john.doe@example.com"
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        let clientManagementViewModel = ClientManagementViewModel(client: Client(nom: "", email: "", dateCreationString: ""))
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
 
         let nom = "Bruce"
