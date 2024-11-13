@@ -7,15 +7,17 @@
 
 import Foundation
 
-class ClientManagementViewModel : ObservableObject, ProtoMethode {
+class ClientManagementViewModel : ObservableObject {
     @Published var nom : String = ""
     @Published var email : String = ""
     let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
+    @Published var message : String = ""
     
     init(client : Client){
         self.client = client
     }
+    
     /// Fonctions
     static func creerNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
@@ -27,8 +29,8 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
         
-        if !clientsList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
             if EmailRegex.isValidEmail(email){
+<<<<<<< HEAD
                
                 print("super emailValid")
                 
@@ -37,25 +39,34 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
                     print("Félicitation vous venez de créer un nouveau client")
                 }else{
                     print("Il n'est pas possible de créer un nouveau client avec ses information, veuillez modifier le nom ainsi que le mail")
+=======
+                
+                if !clientExiste(nom: nom, email: email) {
+                    clientsList.append(newClient)
+                    message = "Nouveau client ajouté avec succès."
+                }else{
+                    message = "Ce client existe déjà dans la liste."
+>>>>>>> TestsUnitaires
                 }
                 
             }else{
-                print("Veuillez vérifier votre adresse email")
+                message = "Adresse email invalide. Veuillez vérifier et réessayer."
             }
-        }
         return clientsList
+        
     }
     
     func removeClientFromList(nom:String, email:String) throws  {
         if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
-            clientsList.remove(at: index)
-            print("Client \(nom) supprimé avec succès.")
-
+                clientsList.remove(at: index)
+                print("Client \(nom) supprimé avec succès.")
+            
+            
         }else{
             throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
-
+            
         }
-       
+        
     }
     
     func estNouveauClient() -> Bool {
@@ -70,8 +81,13 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
         return true
     }
     
-    func clientExiste(clientsList: [Client]) -> Bool {
-        return clientsList.contains(client)
+    func clientExiste(nom: String, email: String) -> Bool {
+//        if clientsList.contains(where: { $0 == self }) {
+//            return true
+//        }
+//        return false
+        return clientsList.contains(where: {$0.nom == nom && $0.email == email})
+        
     }
     
     func formatDateVersString() -> String {
