@@ -27,20 +27,21 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
         
-        if !clientsList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
             if EmailRegex.isValidEmail(email){
+                
                 if !clientExiste(clientsList: clientsList) {
-                    
                     clientsList.append(newClient)
+                    print("Nouveau client ajouté avec succès.")
+                }else{
+                    print("Ce client existe déjà dans la liste.")
                 }
-                print("super emailValid")
+                
             }else{
-                print("Veuillez vérifier votre adresse email")
+                print("Adresse email invalide. Veuillez vérifier et réessayer.")
             }
-        }
         return clientsList
     }
-    
+
     func removeClientFromList(nom:String, email:String) throws  {
         if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
                 clientsList.remove(at: index)
@@ -67,10 +68,11 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
     }
     
     func clientExiste(clientsList: [Client]) -> Bool {
-        if clientsList.contains(where: { $0 == client }) {
-            return true
-        }
-        return false
+//        if clientsList.contains(where: { $0 == self }) {
+//            return true
+//        }
+//        return false
+     return clientsList.contains(where: {$0 == client })
         
     }
     
