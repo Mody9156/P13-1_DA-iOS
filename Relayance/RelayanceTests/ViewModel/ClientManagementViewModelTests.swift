@@ -81,7 +81,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     func testShouldReturnErrorWhenAddingExistingClient() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
+        clientManagementViewModel.clientsList = [initialClient]
 
         let nom = "John Doe"
         let email = "john.doe@example.com"
@@ -96,22 +96,38 @@ final class ClientManagementViewModelTests: XCTestCase {
       
 
     }
-///////////////////////////
 
-    func testWhenDeleteClient() throws {
+    func testWhenDeleteClientDoesntThrowsError() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
+        clientManagementViewModel.clientsList = [initialClient]
 
         //When
         let removeClientFromList = try clientManagementViewModel.removeClientFromList(nom: initialNom, email:initialEmail)
 
         //Then
         XCTAssertNoThrow(removeClientFromList)
+        XCTAssertTrue(clientManagementViewModel.clientsList.isEmpty)
  
     }
     
-    
+    func testWhenDeleteClient_ThrowError() throws {
+        //Given
+        let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
+        clientManagementViewModel.clientsList = [initialClient]
+        
+        let nom = ""
+        let email = ""
+                
+        //When
+        let _ = try clientManagementViewModel.addClientToList(nom: nom, email:email)
+        
+
+        //Then
+        XCTAssertThrowsError(try clientManagementViewModel.removeClientFromList(nom: nom, email:email))
+        XCTAssertTrue(clientManagementViewModel.clientsList.count == 1)
+ 
+    }
     
      func testCreerNouveauClient_CreationReussie(){
          //Given
