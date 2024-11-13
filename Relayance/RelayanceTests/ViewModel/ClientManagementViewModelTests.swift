@@ -39,11 +39,11 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertEqual(updatedClientsList[1].nom,nom)
         XCTAssertEqual(updatedClientsList[1].email,email)
-        XCTAssertEqual(clientManagementViewModel.message, "Ce client existe déjà dans la liste.")
+        XCTAssertEqual(clientManagementViewModel.message, "Nouveau client ajouté avec succès.")
 
     }
     
-    func shouldReturnErrorWhenEmailIsInvalid() throws {
+    func testshouldReturnErrorWhenEmailIsInvalid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
@@ -56,6 +56,7 @@ final class ClientManagementViewModelTests: XCTestCase {
 
         //Then
         XCTAssertEqual(updatedClientsList.count, 1)
+        XCTAssertEqual(clientManagementViewModel.message,"Adresse email invalide. Veuillez vérifier et réessayer.")
     }
     
     func testshouldPassValidationWhenEmailIsValid() throws {
@@ -92,7 +93,7 @@ final class ClientManagementViewModelTests: XCTestCase {
       
 
     }
-
+///////////////////////////
 
     func testWhenDeleteClient() throws {
         //Given
@@ -192,7 +193,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          let clientManagementViewModel =  ClientManagementViewModel(client: client)
 
          //When
-         let clientExiste = clientManagementViewModel.clientExiste(clientsList: list)
+         let clientExiste = clientManagementViewModel.clientExiste(nom: nom, email: email)
          
          //Then
          XCTAssertEqual(clientExiste, true)
@@ -213,7 +214,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          let clientManagementViewModel =  ClientManagementViewModel(client: client)
 
          //When
-         let clientExiste = clientManagementViewModel.clientExiste(clientsList: list)
+         let clientExiste = clientManagementViewModel.clientExiste(nom: nom, email: email)
          
          //Then
          XCTAssertEqual(clientExiste, false)
