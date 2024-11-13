@@ -11,6 +11,10 @@ import SwiftUI
 import Foundation
 
 final class ClientManagementViewModelTests: XCTestCase {
+    
+    var clientManagementViewModel : ClientManagementViewModel!
+    
+    
    
     func testWhenAddNewClient_DoesNotThrowError() async throws{
         //Given
@@ -18,13 +22,14 @@ final class ClientManagementViewModelTests: XCTestCase {
         let initialEmail = "john.doe@example.com"
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         let clientManagementViewModel = ClientManagementViewModel(client: Client(nom: "", email: "", dateCreationString: ""))
-        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
-
+        clientManagementViewModel.clientsList = [initialClient]
+        
         let nom = "Bruce"
         let email = "JamesBrown_Step3@gmail.com"
         
         //When
         let updatedClientsList = try clientManagementViewModel.addClientToList(nom: nom, email:email)
+        
         //Then
         XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertEqual(updatedClientsList[1].nom,nom)
@@ -49,6 +54,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(updatedClientsList.count, 1)
     }
+    
     func testWhenEmailIsValid() throws {
         //Given
         let initialNom = "John Doe"
