@@ -12,6 +12,7 @@ class ClientManagementViewModel : ObservableObject {
     @Published var email : String = ""
     let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
+    @
     
     init(client : Client){
         self.client = client

@@ -42,7 +42,7 @@ final class ClientManagementViewModelTests: XCTestCase {
 
     }
     
-    func testWhenEmailIsInvalid() throws {
+    func shouldReturnErrorWhenEmailIsInvalid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
@@ -57,12 +57,9 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(updatedClientsList.count, 1)
     }
     
-    func testWhenEmailIsValid() throws {
+    func shouldPassValidationWhenEmailIsValid() throws {
         //Given
-        let initialNom = "John Doe"
-        let initialEmail = "john.doe@example.com"
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        let clientManagementViewModel = ClientManagementViewModel(client: Client(nom: "", email: "", dateCreationString: ""))
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
 
         let nom = "Bruce"
@@ -75,14 +72,23 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertNoThrow(updatedClientsList[1].email)
     }
+    
+    func shouldReturnErrorWhenAddingExistingClient(){
+        //Given
+        
+        
+        //When
+        
+        
+        //Then
+        
+        
+    }
 
 
     func testWhenDeleteClient() throws {
         //Given
-        let initialNom = "John Doe"
-        let initialEmail = "john.doe@example.com"
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        let clientManagementViewModel = ClientManagementViewModel(client: Client(nom: "", email: "", dateCreationString: ""))
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
 
         //When
