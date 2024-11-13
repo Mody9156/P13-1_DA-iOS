@@ -17,7 +17,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         var client = Client(nom: "", email: "", dateCreationString: "")
-        self.clientManagementViewModel  = ClientManagementViewModel(client: [client])
+        self.clientManagementViewModel  = ClientManagementViewModel(client: client)
     }
    
     func testWhenAddNewClient_DoesNotThrowError() async throws{
