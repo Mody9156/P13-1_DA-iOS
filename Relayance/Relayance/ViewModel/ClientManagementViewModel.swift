@@ -29,8 +29,16 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
         
         if !clientsList.contains(where: { $0.nom ==  newClient.nom && $0.email == newClient.email }) {
             if EmailRegex.isValidEmail(email){
-                clientsList.append(newClient)
+               
                 print("super emailValid")
+                
+                if !clientExiste(clientsList: clientsList)  {//
+                    clientsList.append(newClient)
+                    print("Félicitation vous venez de créer un nouveau client")
+                }else{
+                    print("Il n'est pas possible de créer un nouveau client avec ses information, veuillez modifier le nom ainsi que le mail")
+                }
+                
             }else{
                 print("Veuillez vérifier votre adresse email")
             }
