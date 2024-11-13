@@ -12,11 +12,10 @@ class ClientManagementViewModel : ObservableObject {
     @Published var email : String = ""
     let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
-    @Published var message : String
+    @Published var message : String = ""
     
-    init(client : Client, message:String){
+    init(client : Client){
         self.client = client
-        self.message = message
     }
     
     /// Fonctions
@@ -32,7 +31,7 @@ class ClientManagementViewModel : ObservableObject {
         
             if EmailRegex.isValidEmail(email){
                 
-                if !clientExiste(clientsList: clientsList) {
+                if !clientExiste(nom: nom, email: email) {
                     clientsList.append(newClient)
                     message = "Nouveau client ajouté avec succès."
                 }else{
@@ -43,8 +42,9 @@ class ClientManagementViewModel : ObservableObject {
                 message = "Adresse email invalide. Veuillez vérifier et réessayer."
             }
         return clientsList
+        
     }
-
+    
     func removeClientFromList(nom:String, email:String) throws  {
         if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
                 clientsList.remove(at: index)
@@ -70,12 +70,12 @@ class ClientManagementViewModel : ObservableObject {
         return true
     }
     
-    func clientExiste(clientsList: [Client]) -> Bool {
+    func clientExiste(nom: String, email: String) -> Bool {
 //        if clientsList.contains(where: { $0 == self }) {
 //            return true
 //        }
 //        return false
-     return clientsList.contains(where: {$0 == client })
+        return clientsList.contains(where: {$0.nom == nom && $0.email == email})
         
     }
     

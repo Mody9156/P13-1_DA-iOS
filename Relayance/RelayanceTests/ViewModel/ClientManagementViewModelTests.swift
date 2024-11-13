@@ -39,6 +39,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertEqual(updatedClientsList[1].nom,nom)
         XCTAssertEqual(updatedClientsList[1].email,email)
+        XCTAssertEqual(clientManagementViewModel.message, "Ce client existe déjà dans la liste.")
 
     }
     
@@ -57,7 +58,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(updatedClientsList.count, 1)
     }
     
-    func shouldPassValidationWhenEmailIsValid() throws {
+    func testshouldPassValidationWhenEmailIsValid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
@@ -69,20 +70,26 @@ final class ClientManagementViewModelTests: XCTestCase {
         let updatedClientsList = try clientManagementViewModel.addClientToList(nom: nom, email:email)
 
         //Then
-        XCTAssertEqual(updatedClientsList.count, 2)
+        XCTAssertEqual(updatedClientsList, 2)
         XCTAssertNoThrow(updatedClientsList[1].email)
     }
-    
-    func shouldReturnErrorWhenAddingExistingClient(){
+ 
+    func testshouldReturnErrorWhenAddingExistingClient() throws {
         //Given
-        
-        
+        let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
+        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
+
+        let nom = "John Doe"
+        let email = "john.doe@example.com"
+                
         //When
-        
-        
+        try clientManagementViewModel.addClientToList(nom: nom, email:email)
+
         //Then
-        
-        
+        XCTAssertEqual(clientManagementViewModel.clientsList.count, 1)
+        XCTAssertEqual(clientManagementViewModel.message, "Ce client existe déjà dans la liste.")
+      
+
     }
 
 
