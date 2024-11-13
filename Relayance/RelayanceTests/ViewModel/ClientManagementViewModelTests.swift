@@ -59,7 +59,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(clientManagementViewModel.message,"Adresse email invalide. Veuillez vérifier et réessayer.")
     }
     
-    func shouldPassValidationWhenEmailIsValid() throws {
+    func testShouldPassValidationWhenEmailIsValid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
@@ -73,6 +73,8 @@ final class ClientManagementViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertNoThrow(updatedClientsList[1].email)
+        XCTAssertEqual(updatedClientsList[1].email,email)
+        
     }
  
     func testshouldReturnErrorWhenAddingExistingClient() throws {
