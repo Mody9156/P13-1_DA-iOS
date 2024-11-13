@@ -12,11 +12,13 @@ class ClientManagementViewModel : ObservableObject {
     @Published var email : String = ""
     let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
-    @
+    @Published var message : String
     
-    init(client : Client){
+    init(client : Client, message:String){
         self.client = client
+        self.message = message
     }
+    
     /// Fonctions
     static func creerNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
@@ -32,13 +34,13 @@ class ClientManagementViewModel : ObservableObject {
                 
                 if !clientExiste(clientsList: clientsList) {
                     clientsList.append(newClient)
-                    print("Nouveau client ajouté avec succès.")
+                    message = "Nouveau client ajouté avec succès."
                 }else{
-                    print("Ce client existe déjà dans la liste.")
+                    message = "Ce client existe déjà dans la liste."
                 }
                 
             }else{
-                print("Adresse email invalide. Veuillez vérifier et réessayer.")
+                message = "Adresse email invalide. Veuillez vérifier et réessayer."
             }
         return clientsList
     }
