@@ -129,7 +129,7 @@ final class ClientManagementViewModelTests: XCTestCase {
  
     }
     
-     func testCreerNouveauClient_CreationReussie(){
+     func testCreerNouveauClient_Creationsucces(){
          //Given
          let nom = "Nelson"
          let email = "Nelson_exemple@gmail.com"
