@@ -40,14 +40,17 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
     
     func removeClientFromList(nom:String, email:String) throws  {
         if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
-            clientsList.remove(at: index)
-            print("Client \(nom) supprimé avec succès.")
-
+            if !clientExiste(clientsList: clientsList) {
+                clientsList.remove(at: index)
+                print("Client \(nom) supprimé avec succès.")
+            }
+            
+            
         }else{
             throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
-
+            
         }
-       
+        
     }
     
     func estNouveauClient() -> Bool {
@@ -63,7 +66,11 @@ class ClientManagementViewModel : ObservableObject, ProtoMethode {
     }
     
     func clientExiste(clientsList: [Client]) -> Bool {
-        return clientsList.contains(client)
+        if clientsList.contains(where: { $0 == client }) {
+            return true
+        }
+        return false
+        
     }
     
     func formatDateVersString() -> String {
