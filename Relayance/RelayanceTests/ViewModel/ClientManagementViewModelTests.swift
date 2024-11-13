@@ -18,7 +18,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        var client = Client(nom: "", email: "", dateCreationString: "")
+        let client = Client(nom: "", email: "", dateCreationString: "")
         self.clientManagementViewModel  = ClientManagementViewModel(client: client)
         self.initialNom  = "John Doe"
         self.initialEmail = "john.doe@example.com"
@@ -70,7 +70,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         let updatedClientsList = try clientManagementViewModel.addClientToList(nom: nom, email:email)
 
         //Then
-        XCTAssertEqual(updatedClientsList, 2)
+        XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertNoThrow(updatedClientsList[1].email)
     }
  
@@ -84,6 +84,7 @@ final class ClientManagementViewModelTests: XCTestCase {
                 
         //When
         try clientManagementViewModel.addClientToList(nom: nom, email:email)
+        let clientExiste = clientManagementViewModel.clientExiste(nom: nom, email: email)
 
         //Then
         XCTAssertEqual(clientManagementViewModel.clientsList.count, 1)
