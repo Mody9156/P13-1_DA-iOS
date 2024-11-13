@@ -76,8 +76,9 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(updatedClientsList[1].email,email)
         
     }
- 
-    func testshouldReturnErrorWhenAddingExistingClient() throws {
+    
+    
+    func testShouldReturnErrorWhenAddingExistingClient() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
@@ -86,8 +87,8 @@ final class ClientManagementViewModelTests: XCTestCase {
         let email = "john.doe@example.com"
                 
         //When
-        try clientManagementViewModel.addClientToList(nom: nom, email:email)
-        let clientExiste = clientManagementViewModel.clientExiste(nom: nom, email: email)
+        let _ = try clientManagementViewModel.addClientToList(nom: nom, email:email)
+        let _ = clientManagementViewModel.clientExiste(nom: nom, email: email)
 
         //Then
         XCTAssertEqual(clientManagementViewModel.clientsList.count, 1)
