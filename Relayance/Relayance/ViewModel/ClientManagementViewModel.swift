@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ClientManagementViewModel : ObservableObject, ProtoMethode {
+class ClientManagementViewModel : ObservableObject {
     @Published var nom : String = ""
     @Published var email : String = ""
     let client : Client
