@@ -129,7 +129,7 @@ final class ClientManagementViewModelTests: XCTestCase {
  
     }
     
-     func testCreerNouveauClient_Creationsucces(){
+     func testShouldCreateNewClient_WhenDataIsValid(){
          //Given
          let nom = "Nelson"
          let email = "Nelson_exemple@gmail.com"
@@ -147,7 +147,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          XCTAssertEqual(creerNouveauClient.dateCreationString.prefix(19), currentDataString.prefix(19))
      }
      
-     func shouldCreateNouveauClient_WhenCreationIsSuccessful(){
+     func testshouldCreateNouveauClient_WhenCreationIsSuccessful(){
          //Given
          let nom = ""
          let email = ""
@@ -196,7 +196,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          //then
          XCTAssertEqual(estNouveauClient,false)
      }
-     
+     /////////////////////////////////////////////////////
      
      func testClientExists_WhenClientExists_ShouldReturnTrue(){
          //Given
@@ -209,6 +209,7 @@ final class ClientManagementViewModelTests: XCTestCase {
                  Client(nom: "Bob Martin", email: "bob.martin@example.com", dateCreationString: "2023-12-01T10:00:00.000Z"),
                  Client(nom: "Charlie Brown", email: "charlie.brown@example.com", dateCreationString: "2023-10-15T15:00:00.000Z")
              ]
+         
          let clientManagementViewModel =  ClientManagementViewModel(client: client)
 
          //When
