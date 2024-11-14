@@ -27,34 +27,28 @@ class ClientManagementViewModel : ObservableObject {
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
         
-<<<<<<< HEAD
             if EmailRegex.isValidEmail(email){
-<<<<<<< HEAD
                
                 print("super emailValid")
                 
-                if !clientExiste(clientsList: clientsList)  {//
+                if !clientExiste(nom: nom, email: email)  {//
                     clientsList.append(newClient)
                     print("Félicitation vous venez de créer un nouveau client")
                 }else{
                     print("Il n'est pas possible de créer un nouveau client avec ses information, veuillez modifier le nom ainsi que le mail")
-=======
                 
                 if !clientExiste(nom: nom, email: email) {
                     clientsList.append(newClient)
                     message = "Nouveau client ajouté avec succès."
                 }else{
                     message = "Ce client existe déjà dans la liste."
->>>>>>> TestsUnitaires
                 }
                 
-=======
         if EmailRegex.isValidEmail(email){
             
             if !clientExiste(nom: nom, email: email) {
                 clientsList.append(newClient)
                 message = "Nouveau client ajouté avec succès."
->>>>>>> TestsUnitaires
             }else{
                 message = "Ce client existe déjà dans la liste."
             }
