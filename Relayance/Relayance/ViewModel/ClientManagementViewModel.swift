@@ -15,6 +15,7 @@ class ClientManagementViewModel : ObservableObject {
     init(client : Client){
         self.client = client
     }
+   
     
     /// Fonctions
     static func createNouveauClient(nom: String, email: String) -> Client {
@@ -31,7 +32,6 @@ class ClientManagementViewModel : ObservableObject {
             
             if !clientExiste(nom: nom, email: email) {
                 clientsList.append(newClient)
-                message = "Nouveau client ajouté avec succès."
             }else{
                 message = "Ce client existe déjà dans la liste."
             }

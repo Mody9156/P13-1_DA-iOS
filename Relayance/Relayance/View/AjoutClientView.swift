@@ -13,7 +13,8 @@ struct AjoutClientView: View {
     @State var email: String = ""
     @ObservedObject var clientManagementViewModel : ClientManagementViewModel
     @State private var animationAmount = 1.0
-    private var showMessage : Bool {
+    @State private var showMessage : Bool = false
+    private var testWhenMessage_isEmpty : Bool {
         clientManagementViewModel.message.isEmpty
     }
     
@@ -23,26 +24,29 @@ struct AjoutClientView: View {
                 .font(.largeTitle)
                 .bold()
                 .multilineTextAlignment(.center)
+            
             Spacer()
+            
             TextField("Nom", text: $nom)
                 .font(.title2)
             TextField("Email", text: $email)
                 .font(.title2)
             Button("Ajouter") {
-                //Ajout d'un client
                 //Rosa Parks
                 //rosa.parks@example.com
-             
-
+                
+                //James
+                //JamesRodriguez@gmail.com
                 Task{
                     try clientManagementViewModel.addClientToList(nom: nom, email: email)
                 }
-                if showMessage {
+//
+                if !testWhenMessage_isEmpty {
                     dismissModal = false
+                    showMessage = true
                 }else{
                     dismissModal = true
                 }
-                
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
@@ -52,11 +56,15 @@ struct AjoutClientView: View {
             .foregroundStyle(.white)
             .padding(.top, 50)
             
-            Text(clientManagementViewModel.message)
-                .foregroundColor(.red)
-                .animation(.easeIn(duration: 2),value:animationAmount)
-               
-                
+            if !testWhenMessage_isEmpty {
+                Text(clientManagementViewModel.message)
+                    .foregroundColor(.red)
+                    .opacity(showMessage ? 0 : 1)
+                    .animation(.easeInOut(duration: 2), value: showMessage)
+                    .onAppear{
+                        showMessage = true
+                    }
+            }
             
             Spacer()
         }
