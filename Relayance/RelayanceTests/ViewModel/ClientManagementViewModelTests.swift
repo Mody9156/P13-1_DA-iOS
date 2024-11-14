@@ -144,7 +144,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          XCTAssertEqual(createNouveauClient.email, email)
          
          let currentDataString = dateFormatter.string(from: Date())
-         XCTAssertEqual(creerNouveauClient.dateCreationString.prefix(19), currentDataString.prefix(19))
+         XCTAssertEqual(createNouveauClient.dateCreationString.prefix(19), currentDataString.prefix(19))
      }
      
      func testshouldCreateNouveauClient_WhenCreationIsSuccessful(){
