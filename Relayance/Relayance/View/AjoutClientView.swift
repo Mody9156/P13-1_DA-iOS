@@ -38,6 +38,8 @@ struct AjoutClientView: View {
             .background(RoundedRectangle(cornerRadius: 10).fill(.orange))
             .foregroundStyle(.white)
             .padding(.top, 50)
+            
+            Text(clientManagementViewModel.message)
             Spacer()
         }
         .padding()

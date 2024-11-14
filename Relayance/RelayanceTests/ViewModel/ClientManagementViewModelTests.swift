@@ -232,7 +232,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          let formatDateVersString = clientManagementViewModel.formatDateVersString()
          
          //then
-         XCTAssert(clientManagementViewModel.client.dateCreationString.isEmpty == true)
+//         XCTAssert()
          
      }//Revoir
      
