@@ -18,6 +18,10 @@ struct AjoutClientView: View {
         clientManagementViewModel.message.isEmpty
     }
     
+    func resetMessage(){
+            clientManagementViewModel.message = ""
+    }
+    
     var body: some View {
         VStack {
             Text("Ajouter un nouveau client")
@@ -32,21 +36,19 @@ struct AjoutClientView: View {
             TextField("Email", text: $email)
                 .font(.title2)
             Button("Ajouter") {
-                //Rosa Parks
-                //rosa.parks@example.com
                 
-                //James
-                //JamesRodriguez@gmail.com
                 Task{
+                    
                     try clientManagementViewModel.addClientToList(nom: nom, email: email)
+                    
+                    resetMessage()
+                    
+                    withAnimation{
+                        showMessage = true
+                    }
+                    dismissModal.toggle()
                 }
-//
-                if !testWhenMessage_isEmpty {
-                    dismissModal = false
-                    showMessage = true
-                }else{
-                    dismissModal = true
-                }
+                
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
@@ -62,10 +64,14 @@ struct AjoutClientView: View {
                     .opacity(showMessage ? 0 : 1)
                     .animation(.easeInOut(duration: 2), value: showMessage)
                     .onAppear{
-                        showMessage = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() +  1.5) {
+                            withAnimation {
+                                showMessage = true
+
+                            }
+                        }
                     }
             }
-            
             Spacer()
         }
         .padding()

@@ -11,12 +11,11 @@ class ClientManagementViewModel : ObservableObject {
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
     @Published var message : String = ""
     let client : Client
-
+   
     init(client : Client){
         self.client = client
     }
    
-    
     /// Fonctions
     static func createNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()

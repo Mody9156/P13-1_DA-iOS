@@ -26,6 +26,8 @@ struct ListClientsView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Ajouter un client") {
                         showModal.toggle()
+                        print("\(showModal)")
+                        
                     }
                     .foregroundStyle(.orange)
                     .bold()
