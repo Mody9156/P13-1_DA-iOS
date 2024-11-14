@@ -8,10 +8,10 @@
 import Foundation
 
 class ClientManagementViewModel : ObservableObject {
-    let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
     @Published var message : String = ""
-    
+    let client : Client
+
     init(client : Client){
         self.client = client
     }

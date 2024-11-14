@@ -7,9 +7,6 @@
 
 import Foundation
 import Relayance
-
-
-class TestHelpers {
    
     func createdDateWithToDay() -> String {
         let calendar  = Calendar.current
@@ -26,4 +23,3 @@ class TestHelpers {
         return dateString
     }
     
-}//*
