@@ -155,11 +155,11 @@ final class ClientManagementViewModelTests: XCTestCase {
          dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                  
          //When
-         let creerNouveauClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
+         let createNouveauClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
          
          //Then
-         XCTAssertTrue(creerNouveauClient.nom.isEmpty)
-         XCTAssertTrue(creerNouveauClient.email.isEmpty)
+         XCTAssertTrue(createNouveauClient.nom.isEmpty)
+         XCTAssertTrue(createNouveauClient.email.isEmpty)
          
      }
      
