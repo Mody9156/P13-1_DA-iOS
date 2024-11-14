@@ -13,7 +13,10 @@ struct AjoutClientView: View {
     @State var email: String = ""
     @ObservedObject var clientManagementViewModel : ClientManagementViewModel
     @State private var animationAmount = 1.0
-
+    private var showMessage : Bool {
+        clientManagementViewModel.message.isEmpty
+    }
+    
     var body: some View {
         VStack {
             Text("Ajouter un nouveau client")
@@ -34,10 +37,12 @@ struct AjoutClientView: View {
                 Task{
                     try clientManagementViewModel.addClientToList(nom: nom, email: email)
                 }
-                if clientManagementViewModel.message.isEmpty {
-                    dismissModal.toggle()
-                    
+                if showMessage {
+                    dismissModal = false
+                }else{
+                    dismissModal = true
                 }
+                
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
