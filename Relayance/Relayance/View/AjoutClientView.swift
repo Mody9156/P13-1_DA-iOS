@@ -12,6 +12,7 @@ struct AjoutClientView: View {
     @State var nom: String = ""
     @State var email: String = ""
     @ObservedObject var clientManagementViewModel : ClientManagementViewModel
+    @State private var animationAmount = 1.0
 
     var body: some View {
         VStack {
@@ -26,10 +27,17 @@ struct AjoutClientView: View {
                 .font(.title2)
             Button("Ajouter") {
                 //Ajout d'un client
+                //Rosa Parks
+                //rosa.parks@example.com
+             
+
                 Task{
                     try clientManagementViewModel.addClientToList(nom: nom, email: email)
                 }
+                if clientManagementViewModel.message.isEmpty {
                     dismissModal.toggle()
+                    
+                }
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
@@ -40,6 +48,11 @@ struct AjoutClientView: View {
             .padding(.top, 50)
             
             Text(clientManagementViewModel.message)
+                .foregroundColor(.red)
+                .animation(.easeIn(duration: 2),value:animationAmount)
+               
+                
+            
             Spacer()
         }
         .padding()
