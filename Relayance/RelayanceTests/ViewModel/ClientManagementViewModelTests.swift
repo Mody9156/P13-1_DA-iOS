@@ -147,7 +147,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          XCTAssertEqual(creerNouveauClient.dateCreationString.prefix(19), currentDataString.prefix(19))
      }
      
-     func testCreerNouveauClient_WhenInvalidData_ShouldReturnFailure(){
+     func shouldCreateNouveauClient_WhenCreationIsSuccessful(){
          //Given
          let nom = ""
          let email = ""
