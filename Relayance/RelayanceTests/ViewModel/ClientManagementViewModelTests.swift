@@ -18,8 +18,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        var client = Client(nom: "", email: "", dateCreationString: "")
-        self.clientManagementViewModel  = ClientManagementViewModel(client: client)
+        self.clientManagementViewModel  = ClientManagementViewModel(client: Client.stubClientWithEmptyData())
         self.initialNom  = "John Doe"
         self.initialEmail = "john.doe@example.com"
     }
@@ -39,14 +38,14 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertEqual(updatedClientsList[1].nom,nom)
         XCTAssertEqual(updatedClientsList[1].email,email)
-        XCTAssertEqual(clientManagementViewModel.message, "Ce client existe déjà dans la liste.")
+        XCTAssertEqual(clientManagementViewModel.message, "Nouveau client ajouté avec succès.")
 
     }
     
-    func shouldReturnErrorWhenEmailIsInvalid() throws {
+    func testshouldReturnErrorWhenEmailIsInvalid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
+        clientManagementViewModel.clientsList = [initialClient]
 
         let nom = "Bruce"
         let email = "JamesBrown_Step"
@@ -56,9 +55,10 @@ final class ClientManagementViewModelTests: XCTestCase {
 
         //Then
         XCTAssertEqual(updatedClientsList.count, 1)
+        XCTAssertEqual(clientManagementViewModel.message,"Adresse email invalide. Veuillez vérifier et réessayer.")
     }
     
-    func testshouldPassValidationWhenEmailIsValid() throws {
+    func testShouldPassValidationWhenEmailIsValid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
@@ -70,20 +70,24 @@ final class ClientManagementViewModelTests: XCTestCase {
         let updatedClientsList = try clientManagementViewModel.addClientToList(nom: nom, email:email)
 
         //Then
-        XCTAssertEqual(updatedClientsList, 2)
+        XCTAssertEqual(updatedClientsList.count, 2)
         XCTAssertNoThrow(updatedClientsList[1].email)
+        XCTAssertEqual(updatedClientsList[1].email,email)
+        
     }
- 
-    func testshouldReturnErrorWhenAddingExistingClient() throws {
+    
+    
+    func testShouldReturnErrorWhenAddingExistingClient() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
+        clientManagementViewModel.clientsList = [initialClient]
 
         let nom = "John Doe"
         let email = "john.doe@example.com"
                 
         //When
-        try clientManagementViewModel.addClientToList(nom: nom, email:email)
+        let _ = try clientManagementViewModel.addClientToList(nom: nom, email:email)
+        let _ = clientManagementViewModel.clientExiste(nom: nom, email: email)
 
         //Then
         XCTAssertEqual(clientManagementViewModel.clientsList.count, 1)
@@ -92,23 +96,39 @@ final class ClientManagementViewModelTests: XCTestCase {
 
     }
 
-
-    func testWhenDeleteClient() throws {
+    func testWhenDeleteClientDoesntThrowsError() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
+        clientManagementViewModel.clientsList = [initialClient]
 
         //When
         let removeClientFromList = try clientManagementViewModel.removeClientFromList(nom: initialNom, email:initialEmail)
 
         //Then
         XCTAssertNoThrow(removeClientFromList)
+        XCTAssertTrue(clientManagementViewModel.clientsList.isEmpty)
  
     }
     
+    func testWhenDeleteClient_ThrowError() throws {
+        //Given
+        let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
+        clientManagementViewModel.clientsList = [initialClient]
+        
+        let nom = ""
+        let email = ""
+                
+        //When
+        let _ = try clientManagementViewModel.addClientToList(nom: nom, email:email)
+        
+
+        //Then
+        XCTAssertThrowsError(try clientManagementViewModel.removeClientFromList(nom: nom, email:email))
+        XCTAssertTrue(clientManagementViewModel.clientsList.count == 1)
+ 
+    }
     
-    
-     func testCreerNouveauClient_CreationReussie(){
+     func testShouldCreateNewClient_WhenDataIsValid(){
          //Given
          let nom = "Nelson"
          let email = "Nelson_exemple@gmail.com"
@@ -116,17 +136,17 @@ final class ClientManagementViewModelTests: XCTestCase {
          dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                  
          //When
-         let creerNouveauClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
+         let createNouveauClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
          
          //Then
-         XCTAssertEqual(creerNouveauClient.nom, nom)
-         XCTAssertEqual(creerNouveauClient.email, email)
+         XCTAssertEqual(createNouveauClient.nom, nom)
+         XCTAssertEqual(createNouveauClient.email, email)
          
          let currentDataString = dateFormatter.string(from: Date())
-         XCTAssertEqual(creerNouveauClient.dateCreationString.prefix(19), currentDataString.prefix(19))
+         XCTAssertEqual(createNouveauClient.dateCreationString.prefix(19), currentDataString.prefix(19))
      }
      
-     func testCreerNouveauClient_WhenInvalidData_ShouldReturnFailure(){
+     func testShouldCreateNouveauClient_WhenCreationIsSuccessful(){
          //Given
          let nom = ""
          let email = ""
@@ -134,11 +154,11 @@ final class ClientManagementViewModelTests: XCTestCase {
          dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                  
          //When
-         let creerNouveauClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
+         let createNouveauClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
          
          //Then
-         XCTAssertTrue(creerNouveauClient.nom.isEmpty)
-         XCTAssertTrue(creerNouveauClient.email.isEmpty)
+         XCTAssertTrue(createNouveauClient.nom.isEmpty)
+         XCTAssertTrue(createNouveauClient.email.isEmpty)
          
      }
      
@@ -166,7 +186,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          let email = "Rodrigue@gmail.com"
          let dateCreationString = "2023-01-07T16:02:42.000Z"
          let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
-         let clientManagementViewModel =  ClientManagementViewModel(client: client)
+         let clientManagementViewModel = ClientManagementViewModel(client: client)
          let toDay = Date.now
          
          //when
@@ -175,29 +195,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          //then
          XCTAssertEqual(estNouveauClient,false)
      }
-     
-     
-     func testClientExists_WhenClientExists_ShouldReturnTrue(){
-         //Given
-         let nom = "Alice Dupont"
-         let email = "alice.dupont@example.com"
-         let dateCreationString = "2023-11-07T12:00:00.000Z"
-         let client = Client(nom: nom, email: email, dateCreationString: dateCreationString)
-         let list = [
-                 Client(nom: "Alice Dupont", email: "alice.dupont@example.com", dateCreationString: "2023-11-07T12:00:00.000Z"),
-                 Client(nom: "Bob Martin", email: "bob.martin@example.com", dateCreationString: "2023-12-01T10:00:00.000Z"),
-                 Client(nom: "Charlie Brown", email: "charlie.brown@example.com", dateCreationString: "2023-10-15T15:00:00.000Z")
-             ]
-         let clientManagementViewModel =  ClientManagementViewModel(client: client)
-
-         //When
-         let clientExiste = clientManagementViewModel.clientExiste(clientsList: list)
-         
-         //Then
-         XCTAssertEqual(clientExiste, true)
-         
-     }
-     
+  
      func testClientExists_WhenClientDoesNotExist_ShouldReturnFalse(){
          //Given
          let nom = "Cena John"
@@ -212,7 +210,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          let clientManagementViewModel =  ClientManagementViewModel(client: client)
 
          //When
-         let clientExiste = clientManagementViewModel.clientExiste(clientsList: list)
+         let clientExiste = clientManagementViewModel.clientExiste(nom: nom, email: email)
          
          //Then
          XCTAssertEqual(clientExiste, false)
@@ -254,7 +252,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          print("validDateFormat:\(validDateFormat)")
          
          XCTAssertEqual(validDateFormat, client.dateCreationString)
-     }//Terminer
+     }
      
      func testDateCreation_WhenDateCreationStringIsInvalid_ShouldReturnCurrentDate(){
          //Given
@@ -269,8 +267,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          
          //Then
          XCTAssert(abs(type.timeIntervalSince(dateNow)) < 1)
-         
-         
+        
      }
 }
 

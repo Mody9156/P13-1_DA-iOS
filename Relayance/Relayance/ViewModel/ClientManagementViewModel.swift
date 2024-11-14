@@ -8,8 +8,6 @@
 import Foundation
 
 class ClientManagementViewModel : ObservableObject {
-    @Published var nom : String = ""
-    @Published var email : String = ""
     let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
     @Published var message : String = ""
@@ -19,7 +17,7 @@ class ClientManagementViewModel : ObservableObject {
     }
     
     /// Fonctions
-    static func creerNouveauClient(nom: String, email: String) -> Client {
+    static func createNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
@@ -27,8 +25,9 @@ class ClientManagementViewModel : ObservableObject {
     }
     
     func addClientToList(nom:String,email:String) throws -> [Client]{
-        let newClient = ClientManagementViewModel.creerNouveauClient(nom: nom, email: email)
+        let newClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
         
+<<<<<<< HEAD
             if EmailRegex.isValidEmail(email){
 <<<<<<< HEAD
                
@@ -49,19 +48,27 @@ class ClientManagementViewModel : ObservableObject {
 >>>>>>> TestsUnitaires
                 }
                 
+=======
+        if EmailRegex.isValidEmail(email){
+            
+            if !clientExiste(nom: nom, email: email) {
+                clientsList.append(newClient)
+                message = "Nouveau client ajouté avec succès."
+>>>>>>> TestsUnitaires
             }else{
-                message = "Adresse email invalide. Veuillez vérifier et réessayer."
+                message = "Ce client existe déjà dans la liste."
             }
+            
+        }else{
+            message = "Adresse email invalide. Veuillez vérifier et réessayer."
+        }
         return clientsList
         
     }
     
     func removeClientFromList(nom:String, email:String) throws  {
         if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
-                clientsList.remove(at: index)
-                print("Client \(nom) supprimé avec succès.")
-            
-            
+            clientsList.remove(at: index)
         }else{
             throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
             
@@ -82,12 +89,7 @@ class ClientManagementViewModel : ObservableObject {
     }
     
     func clientExiste(nom: String, email: String) -> Bool {
-//        if clientsList.contains(where: { $0 == self }) {
-//            return true
-//        }
-//        return false
         return clientsList.contains(where: {$0.nom == nom && $0.email == email})
-        
     }
     
     func formatDateVersString() -> String {
