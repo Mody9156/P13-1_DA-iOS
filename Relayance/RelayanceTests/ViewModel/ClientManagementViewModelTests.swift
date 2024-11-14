@@ -23,7 +23,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         self.initialEmail = "john.doe@example.com"
     }
    
-    func testWhenAddNewClient_DoesNotThrowError() async throws{
+    func testWhenAddNewClient_doesNotThrowError() throws{
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient]
@@ -42,7 +42,7 @@ final class ClientManagementViewModelTests: XCTestCase {
 
     }
     
-    func testshouldReturnErrorWhenEmailIsInvalid() throws {
+    func testShouldReturnErrorWhenEmailIsInvalid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient]
@@ -61,7 +61,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     func testShouldPassValidationWhenEmailIsValid() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
-        clientManagementViewModel.clientsList = [initialClient] // Assurez-vous que la liste est initialisée
+        clientManagementViewModel.clientsList = [initialClient]
 
         let nom = "Bruce"
         let email = "JamesBrown_Step@gmail.com"
@@ -96,13 +96,13 @@ final class ClientManagementViewModelTests: XCTestCase {
 
     }
 
-    func testWhenDeleteClientDoesntThrowsError() throws {
+    func testDeleteClientDoesNotThrowError() throws {
         //Given
         let initialClient = Client(nom: initialNom, email: initialEmail, dateCreationString: "2024-10-10T08:30:00.000Z")
         clientManagementViewModel.clientsList = [initialClient]
 
         //When
-        let removeClientFromList = try clientManagementViewModel.removeClientFromList(nom: initialNom, email:initialEmail)
+        let removeClientFromList: () = try clientManagementViewModel.removeClientFromList(nom: initialNom, email:initialEmail)
 
         //Then
         XCTAssertNoThrow(removeClientFromList)
