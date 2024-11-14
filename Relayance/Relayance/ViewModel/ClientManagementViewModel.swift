@@ -8,14 +8,14 @@
 import Foundation
 
 class ClientManagementViewModel : ObservableObject {
-    let client : Client
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
     @Published var message : String = ""
-    
+    let client : Client
+   
     init(client : Client){
         self.client = client
     }
-    
+   
     /// Fonctions
     static func createNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
@@ -48,7 +48,6 @@ class ClientManagementViewModel : ObservableObject {
             
             if !clientExiste(nom: nom, email: email) {
                 clientsList.append(newClient)
-                message = "Nouveau client ajouté avec succès."
             }else{
                 message = "Ce client existe déjà dans la liste."
             }
