@@ -19,6 +19,8 @@ struct ListClientsView: View {
                 } label: {
                     Text(client.nom)
                         .font(.title3)
+                    Spacer()
+                    Text("")
                 }
             }
             .navigationTitle("Liste des clients")

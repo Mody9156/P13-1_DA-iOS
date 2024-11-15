@@ -11,14 +11,16 @@ struct AddClientPage: View {
     @Binding var dismissModal: Bool
     @State var nom: String = ""
     @State var email: String = ""
-    @ObservedObject var clientManagementViewModel : ClientManagementViewModel
-    @State private var showMessage : Bool = false
-    private var testWhenMessage_isEmpty : Bool {
+    @ObservedObject var clientManagementViewModel: ClientManagementViewModel
+    @State private var showMessage: Bool = false
+    
+    private var isMessageEmpty: Bool {
         clientManagementViewModel.message.isEmpty
     }
     
     var body: some View {
         VStack {
+            // Title
             Text("Ajouter un nouveau client")
                 .font(.largeTitle)
                 .bold()
@@ -26,24 +28,27 @@ struct AddClientPage: View {
             
             Spacer()
             
+            // Input fields
             TextField("Nom", text: $nom)
                 .font(.title2)
+                .padding(.vertical, 10)
+            
             TextField("Email", text: $email)
                 .font(.title2)
+                .padding(.vertical, 10)
+            
+            // Add button
             Button("Ajouter") {
-                
-                Task{
-                    
+                Task {
                     try clientManagementViewModel.addClientToList(nom: nom, email: email)
                     
-                    if !testWhenMessage_isEmpty {
+                    if !isMessageEmpty {
                         dismissModal = false
                         showMessage = false
-                        
                     }
+                    
                     dismissModal.toggle()
                 }
-                
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
@@ -53,15 +58,17 @@ struct AddClientPage: View {
             .foregroundStyle(.white)
             .padding(.top, 50)
             
-            if !testWhenMessage_isEmpty {
+            // Error message
+            if !isMessageEmpty {
                 Text(clientManagementViewModel.message)
                     .foregroundColor(.red)
                     .opacity(showMessage ? 0 : 1)
                     .animation(.easeInOut(duration: 2), value: showMessage)
-                    .onAppear{
+                    .onAppear {
                         showMessage = true
                     }
             }
+            
             Spacer()
         }
         .padding()
