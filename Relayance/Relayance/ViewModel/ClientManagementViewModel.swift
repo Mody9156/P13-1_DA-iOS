@@ -11,11 +11,11 @@ class ClientManagementViewModel : ObservableObject {
     @Published var clientsList: [Client] = ModelData.chargement("Source.json")
     @Published var message : String = ""
     let client : Client
-   
+    
     init(client : Client){
         self.client = client
     }
-   
+    
     /// Fonctions
     static func createNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
@@ -27,65 +27,51 @@ class ClientManagementViewModel : ObservableObject {
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
         
-            if EmailRegex.isValidEmail(email){
-               
-                print("super emailValid")
-                
-                if !clientExiste(nom: nom, email: email)  {//
-                    clientsList.append(newClient)
-                    print("Félicitation vous venez de créer un nouveau client")
-                }else{
-                    print("Il n'est pas possible de créer un nouveau client avec ses information, veuillez modifier le nom ainsi que le mail")
-                
-                if !clientExiste(nom: nom, email: email) {
-                    clientsList.append(newClient)
-                    message = "Nouveau client ajouté avec succès."
-                }else{
-                    message = "Ce client existe déjà dans la liste."
-                }
-                
         if EmailRegex.isValidEmail(email){
             
-            if !clientExiste(nom: nom, email: email) {
-                clientsList.append(newClient)
-            }else{
-                message = "Ce client existe déjà dans la liste."
-            }
+            print("super emailValid")
             
-        }else{
-            message = "Adresse email invalide. Veuillez vérifier et réessayer."
+            if !clientExiste(nom: nom, email: email)  {//
+                clientsList.append(newClient)
+                print("Félicitation vous venez de créer un nouveau client")
+            }else{
+                print("Il n'est pas possible de créer un nouveau client avec ses information, veuillez modifier le nom ainsi que le mail")
+                
+                
+                
+            }
         }
         return clientsList
-        
+
     }
-    
-    func removeClientFromList(nom:String, email:String) throws  {
-        if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
-            clientsList.remove(at: index)
-        }else{
-            throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
+            func removeClientFromList(nom:String, email:String) throws  {
+                if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
+                    clientsList.remove(at: index)
+                }else{
+                    throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
+                    
+                }
+                
+            }
             
+            func estNouveauClient() -> Bool {
+                let aujourdhui = Date.now
+                let dateCreation = client.dateCreation
+                
+                if aujourdhui.getYear() != dateCreation.getYear() ||
+                    aujourdhui.getMonth() != dateCreation.getMonth() ||
+                    aujourdhui.getDay() != dateCreation.getDay() {
+                    return false
+                }
+                return true
+            }
+            
+            func clientExiste(nom: String, email: String) -> Bool {
+                return clientsList.contains(where: {$0.nom == nom && $0.email == email})
+            }
+            
+            func formatDateVersString() -> String {
+                return Date.stringFromDate(client.dateCreation) ?? client.dateCreationString
+            }
         }
-        
-    }
-    
-    func estNouveauClient() -> Bool {
-        let aujourdhui = Date.now
-        let dateCreation = client.dateCreation
-        
-        if aujourdhui.getYear() != dateCreation.getYear() ||
-            aujourdhui.getMonth() != dateCreation.getMonth() ||
-            aujourdhui.getDay() != dateCreation.getDay() {
-            return false
-        }
-        return true
-    }
-    
-    func clientExiste(nom: String, email: String) -> Bool {
-        return clientsList.contains(where: {$0.nom == nom && $0.email == email})
-    }
-    
-    func formatDateVersString() -> String {
-        return Date.stringFromDate(client.dateCreation) ?? client.dateCreationString
-    }
-}
+ 
