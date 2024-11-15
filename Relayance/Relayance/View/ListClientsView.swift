@@ -10,6 +10,7 @@ import SwiftUI
 struct ListClientsView: View {
     @State private var showModal: Bool = false
     @ObservedObject var clientManagementViewModel : ClientManagementViewModel
+    @State private var isAnimating : Bool  = false
     
     var body: some View {
         NavigationStack {
@@ -19,6 +20,21 @@ struct ListClientsView: View {
                 } label: {
                     Text(client.nom)
                         .font(.title3)
+                    
+                    if clientManagementViewModel.estNouveauClient(client: client){
+                        Text("Nouveau")
+                            .foregroundColor(.orange)
+                            .font(.footnote)
+                            .scaleEffect(isAnimating  ? 1.2 : 1.0)
+                            .animation(
+                                .linear(duration: 1.0)
+                                .repeatForever(autoreverses: true),
+                                value: isAnimating
+                            )
+                            .onAppear{
+                                isAnimating = true
+                            }
+                    }
                 }
             }
             .navigationTitle("Liste des clients")
@@ -34,9 +50,8 @@ struct ListClientsView: View {
                 }
             }
             .sheet(isPresented: $showModal, content: {
-                AjoutClientView(dismissModal: $showModal, clientManagementViewModel: clientManagementViewModel)
+                AddClientPage(dismissModal: $showModal, clientManagementViewModel: clientManagementViewModel)
             })
         }
     }
-    
 }

@@ -21,7 +21,7 @@
 		422740F72C3ECFD600E7522C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422740F62C3ECFD600E7522C /* ModelData.swift */; };
 		422740F92C3ED02400E7522C /* Source.json in Resources */ = {isa = PBXBuildFile; fileRef = 422740F82C3ED02400E7522C /* Source.json */; };
 		422740FB2C3ED0EE00E7522C /* DetailClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422740FA2C3ED0EE00E7522C /* DetailClientView.swift */; };
-		422740FD2C3ED18D00E7522C /* AjoutClientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422740FC2C3ED18D00E7522C /* AjoutClientView.swift */; };
+		422740FD2C3ED18D00E7522C /* AddClientPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422740FC2C3ED18D00E7522C /* AddClientPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 		422740F62C3ECFD600E7522C /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		422740F82C3ED02400E7522C /* Source.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Source.json; sourceTree = "<group>"; };
 		422740FA2C3ED0EE00E7522C /* DetailClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClientView.swift; sourceTree = "<group>"; };
-		422740FC2C3ED18D00E7522C /* AjoutClientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjoutClientView.swift; sourceTree = "<group>"; };
+		422740FC2C3ED18D00E7522C /* AddClientPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClientPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 		23ABD80B2CDD0CDC009868C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				422740FC2C3ED18D00E7522C /* AjoutClientView.swift */,
+				422740FC2C3ED18D00E7522C /* AddClientPage.swift */,
 				422740FA2C3ED0EE00E7522C /* DetailClientView.swift */,
 				422740F42C3ECFCA00E7522C /* ListClientsView.swift */,
 			);
@@ -281,7 +281,7 @@
 				23C8D1782CDE294300D9A08F /* ClientManagementViewModel.swift in Sources */,
 				422740FB2C3ED0EE00E7522C /* DetailClientView.swift in Sources */,
 				422740EF2C3ECD1500E7522C /* DateExtension.swift in Sources */,
-				422740FD2C3ED18D00E7522C /* AjoutClientView.swift in Sources */,
+				422740FD2C3ED18D00E7522C /* AddClientPage.swift in Sources */,
 				422740712C3BF4DC00E7522C /* RelayanceApp.swift in Sources */,
 				422740F72C3ECFD600E7522C /* ModelData.swift in Sources */,
 				23A0B1A32CE37A2300634D8E /* EmailRegex.swift in Sources */,

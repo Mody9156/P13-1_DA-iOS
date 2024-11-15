@@ -24,7 +24,11 @@ struct DetailClientView: View {
                 .padding()
             Text(client.email)
                 .font(.title3)
+<<<<<<< HEAD
             Text($clientManagementViewModel.formatDateVersString())
+=======
+            Text(clientManagementViewModel.formatDateVersString(client: client))
+>>>>>>> TestsUnitaires
                 .font(.title3)
             Spacer()
         }

@@ -24,6 +24,7 @@ class ClientManagementViewModel : ObservableObject {
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
     }
     
+    @discardableResult
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
         
@@ -33,7 +34,11 @@ class ClientManagementViewModel : ObservableObject {
             
             if !clientExiste(nom: nom, email: email)  {//
                 clientsList.append(newClient)
+<<<<<<< HEAD
                 print("Félicitation vous venez de créer un nouveau client")
+=======
+                message = ""
+>>>>>>> TestsUnitaires
             }else{
                 print("Il n'est pas possible de créer un nouveau client avec ses information, veuillez modifier le nom ainsi que le mail")
                 
@@ -44,6 +49,7 @@ class ClientManagementViewModel : ObservableObject {
         return clientsList
 
     }
+<<<<<<< HEAD
             func removeClientFromList(nom:String, email:String) throws  {
                 if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
                     clientsList.remove(at: index)
@@ -75,3 +81,34 @@ class ClientManagementViewModel : ObservableObject {
             }
         }
  
+=======
+    
+    func removeClientFromList(nom:String, email:String) throws  {
+        if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
+            clientsList.remove(at: index)
+        }else{
+            throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
+        }
+    }
+    
+    func estNouveauClient(client : Client) -> Bool {
+        let aujourdhui = Date.now
+        let dateCreation = client.dateCreation
+        
+        if aujourdhui.getYear() != dateCreation.getYear() ||
+            aujourdhui.getMonth() != dateCreation.getMonth() ||
+            aujourdhui.getDay() != dateCreation.getDay() {
+            return false
+        }
+        return true
+    }
+    
+    func clientExiste(nom: String, email: String) -> Bool {
+        return clientsList.contains(where: {$0.nom == nom && $0.email == email})
+    }
+    
+    func formatDateVersString(client : Client) -> String {
+        return Date.stringFromDate(client.dateCreation) ?? client.dateCreationString
+    }
+}
+>>>>>>> TestsUnitaires
