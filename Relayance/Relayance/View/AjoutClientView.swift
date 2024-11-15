@@ -41,10 +41,10 @@ struct AjoutClientView: View {
                     
                     try clientManagementViewModel.addClientToList(nom: nom, email: email)
                     
-                    resetMessage()
-                    
-                    withAnimation{
-                        showMessage = true
+                    if !testWhenMessage_isEmpty {
+                        dismissModal = false
+                        showMessage = false
+
                     }
                     dismissModal.toggle()
                 }
@@ -64,12 +64,7 @@ struct AjoutClientView: View {
                     .opacity(showMessage ? 0 : 1)
                     .animation(.easeInOut(duration: 2), value: showMessage)
                     .onAppear{
-                        DispatchQueue.main.asyncAfter(deadline: .now() +  1.5) {
-                            withAnimation {
-                                showMessage = true
-
-                            }
-                        }
+                      showMessage = true
                     }
             }
             Spacer()

@@ -31,6 +31,7 @@ class ClientManagementViewModel : ObservableObject {
             
             if !clientExiste(nom: nom, email: email) {
                 clientsList.append(newClient)
+                message = ""
             }else{
                 message = "Ce client existe déjà dans la liste."
             }
@@ -47,9 +48,7 @@ class ClientManagementViewModel : ObservableObject {
             clientsList.remove(at: index)
         }else{
             throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
-            
         }
-        
     }
     
     func estNouveauClient() -> Bool {
