@@ -234,7 +234,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          //Given
          let dateCreationString = ""
          let client = Client(nom: initialNom, email: initialEmail, dateCreationString: dateCreationString)
-         clientMgitanagementViewModel.clientsList = [client]
+         clientManagementViewModel.clientsList = [client]
          let date = Date()
           let fomattingString = Date.stringFromDate(date)
           //then
