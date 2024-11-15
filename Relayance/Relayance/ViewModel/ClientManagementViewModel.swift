@@ -44,7 +44,6 @@ class ClientManagementViewModel : ObservableObject {
             }
         }
         return clientsList
-        
     }
     func removeClientFromList(nom:String, email:String) throws  {
         if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
