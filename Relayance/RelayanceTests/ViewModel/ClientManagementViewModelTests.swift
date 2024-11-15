@@ -218,7 +218,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          clientManagementViewModel.clientsList = [client]
 
          //when
-         let dateFormat = clientManagementViewModel.formatDateVersString()
+         let dateFormat = clientManagementViewModel.formatDateVersString(client: client)
          //then
          XCTAssertNotNil(dateFormat)
      
@@ -232,12 +232,12 @@ final class ClientManagementViewModelTests: XCTestCase {
    
      func testDateFormattedToString_whenInvalidDate_shouldReturnCorrectString(){
          //Given
-         let dateCreationString = "2023-11-07T12:00:00.000Z"
+         let dateCreationString = ""
          let client = Client(nom: initialNom, email: initialEmail, dateCreationString: dateCreationString)
          clientManagementViewModel.clientsList = [client]
 
          //When
-         let formatDateVersString = clientManagementViewModel.formatDateVersString()
+         let formatDateVersString = clientManagementViewModel.formatDateVersString(client: client)
          
          //then
 //         XCTAssert()
