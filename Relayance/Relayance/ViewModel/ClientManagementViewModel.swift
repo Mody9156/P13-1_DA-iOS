@@ -30,51 +30,18 @@ class ClientManagementViewModel : ObservableObject {
         
         if EmailRegex.isValidEmail(email){
             
-            print("super emailValid")
-            
-            if !clientExiste(nom: nom, email: email)  {//
+            if !clientExiste(nom: nom, email: email) {
                 clientsList.append(newClient)
-                print("Félicitation vous venez de créer un nouveau client")
                 message = ""
             }else{
-                print("Il n'est pas possible de créer un nouveau client avec ses information, veuillez modifier le nom ainsi que le mail")
-                
-                
-                
+                message = "Ce client existe déjà dans la liste."
             }
+            
+        }else{
+            message = "Adresse email invalide. Veuillez vérifier et réessayer."
         }
         return clientsList
     }
-    func removeClientFromList(nom:String, email:String) throws  {
-        if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
-            clientsList.remove(at: index)
-        }else{
-            throw NSError(domain: "ClientManagementError", code: 404, userInfo: [NSLocalizedDescriptionKey: "Client non trouvé."])
-            
-        }
-        
-    }
-    
-    func estNouveauClient() -> Bool {
-        let aujourdhui = Date.now
-        let dateCreation = client.dateCreation
-        
-        if aujourdhui.getYear() != dateCreation.getYear() ||
-            aujourdhui.getMonth() != dateCreation.getMonth() ||
-            aujourdhui.getDay() != dateCreation.getDay() {
-            return false
-        }
-        return true
-    }
-    
-    func clientExiste(nom: String, email: String) -> Bool {
-        return clientsList.contains(where: {$0.nom == nom && $0.email == email})
-    }
-    
-    func formatDateVersString() -> String {
-        return Date.stringFromDate(client.dateCreation) ?? client.dateCreationString
-    }
-    
     
     func removeClientFromList(nom:String, email:String) throws  {
         if let index =  clientsList.firstIndex(where: {$0.nom == nom && $0.email == email}){
