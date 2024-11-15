@@ -12,14 +12,9 @@ struct AjoutClientView: View {
     @State var nom: String = ""
     @State var email: String = ""
     @ObservedObject var clientManagementViewModel : ClientManagementViewModel
-    @State private var animationAmount = 1.0
     @State private var showMessage : Bool = false
     private var testWhenMessage_isEmpty : Bool {
         clientManagementViewModel.message.isEmpty
-    }
-    
-    func resetMessage(){
-            clientManagementViewModel.message = ""
     }
     
     var body: some View {

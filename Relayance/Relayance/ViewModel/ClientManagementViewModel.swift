@@ -24,6 +24,7 @@ class ClientManagementViewModel : ObservableObject {
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
     }
     
+    @discardableResult
     func addClientToList(nom:String,email:String) throws -> [Client]{
         let newClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
         
