@@ -41,7 +41,6 @@ class ClientManagementViewModel : ObservableObject {
             message = "Adresse email invalide. Veuillez vérifier et réessayer."
         }
         return clientsList
-        
     }
     
     func removeClientFromList(nom:String, email:String) throws  {
