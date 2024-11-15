@@ -68,7 +68,7 @@ class ClientManagementViewModel : ObservableObject {
         return clientsList.contains(where: {$0.nom == nom && $0.email == email})
     }
     
-    func formatDateVersString() -> String {
+    func formatDateVersString(client : Client) -> String {
         return Date.stringFromDate(client.dateCreation) ?? client.dateCreationString
     }
 }
