@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AjoutClientView: View {
+struct AddClientPage: View {
     @Binding var dismissModal: Bool
     @State var nom: String = ""
     @State var email: String = ""
@@ -39,7 +39,7 @@ struct AjoutClientView: View {
                     if !testWhenMessage_isEmpty {
                         dismissModal = false
                         showMessage = false
-
+                        
                     }
                     dismissModal.toggle()
                 }
@@ -59,7 +59,7 @@ struct AjoutClientView: View {
                     .opacity(showMessage ? 0 : 1)
                     .animation(.easeInOut(duration: 2), value: showMessage)
                     .onAppear{
-                      showMessage = true
+                        showMessage = true
                     }
             }
             Spacer()

@@ -34,7 +34,7 @@ struct ListClientsView: View {
                 }
             }
             .sheet(isPresented: $showModal, content: {
-                AjoutClientView(dismissModal: $showModal, clientManagementViewModel: clientManagementViewModel)
+                AddClientPage(dismissModal: $showModal, clientManagementViewModel: clientManagementViewModel)
             })
         }
     }
