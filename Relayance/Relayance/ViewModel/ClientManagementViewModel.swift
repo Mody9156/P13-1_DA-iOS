@@ -52,7 +52,7 @@ class ClientManagementViewModel : ObservableObject {
         }
     }
     
-    func estNouveauClient() -> Bool {
+    func estNouveauClient(client : Client) -> Bool {
         let aujourdhui = Date.now
         let dateCreation = client.dateCreation
         

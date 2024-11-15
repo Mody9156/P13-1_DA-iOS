@@ -21,7 +21,7 @@ struct ListClientsView: View {
                     Text(client.nom)
                         .font(.title3)
                     
-                    if clientManagementViewModel.estNouveauClient(){
+                    if clientManagementViewModel.estNouveauClient(client: client){
                         Text("Nouveau")
                             .foregroundColor(.orange)
                             .font(.footnote)
