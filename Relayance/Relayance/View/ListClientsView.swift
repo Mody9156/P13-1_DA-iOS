@@ -20,18 +20,21 @@ struct ListClientsView: View {
                 } label: {
                     Text(client.nom)
                         .font(.title3)
-                    Text("Nouveau")
-                        .foregroundColor(.orange)
-                        .font(.footnote)
-                        .scaleEffect(isAnimating  ? 1.2 : 1.0)
-                        .animation(
-                            .linear(duration: 1.0)
-                            .repeatForever(autoreverses: true),
-                            value: isAnimating
-                        )
-                        .onAppear{
-                            isAnimating = true
-                        }
+                    
+                    if clientManagementViewModel.estNouveauClient(){
+                        Text("Nouveau")
+                            .foregroundColor(.orange)
+                            .font(.footnote)
+                            .scaleEffect(isAnimating  ? 1.2 : 1.0)
+                            .animation(
+                                .linear(duration: 1.0)
+                                .repeatForever(autoreverses: true),
+                                value: isAnimating
+                            )
+                            .onAppear{
+                                isAnimating = true
+                            }
+                    }
                 }
             }
             .navigationTitle("Liste des clients")
