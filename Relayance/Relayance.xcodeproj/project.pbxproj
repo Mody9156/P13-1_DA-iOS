@@ -12,6 +12,7 @@
 		23A0B1A12CE355DA00634D8E /* ClientManagementViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */; };
 		23A0B1A32CE37A2300634D8E /* EmailRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0B1A22CE37A2200634D8E /* EmailRegex.swift */; };
 		23C8D1782CDE294300D9A08F /* ClientManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */; };
+		23FF37232CEB855D006B773A /* EmailRegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FF37222CEB855D006B773A /* EmailRegexTests.swift */; };
 		422740712C3BF4DC00E7522C /* RelayanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422740702C3BF4DC00E7522C /* RelayanceApp.swift */; };
 		422740752C3BF4DD00E7522C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422740742C3BF4DD00E7522C /* Assets.xcassets */; };
 		422740782C3BF4DD00E7522C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422740772C3BF4DD00E7522C /* Preview Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManagementViewModelTests.swift; sourceTree = "<group>"; };
 		23A0B1A22CE37A2200634D8E /* EmailRegex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegex.swift; sourceTree = "<group>"; };
 		23C8D1772CDE294300D9A08F /* ClientManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManagementViewModel.swift; sourceTree = "<group>"; };
+		23FF37222CEB855D006B773A /* EmailRegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegexTests.swift; sourceTree = "<group>"; };
 		4227406D2C3BF4DC00E7522C /* Relayance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Relayance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422740702C3BF4DC00E7522C /* RelayanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelayanceApp.swift; sourceTree = "<group>"; };
 		422740742C3BF4DD00E7522C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				23A0B1A02CE355DA00634D8E /* ClientManagementViewModelTests.swift */,
+				23FF37222CEB855D006B773A /* EmailRegexTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			files = (
 				23375A382CDD4F3B0089E1E2 /* ExtensionClient.swift in Sources */,
 				23A0B1A12CE355DA00634D8E /* ClientManagementViewModelTests.swift in Sources */,
+				23FF37232CEB855D006B773A /* EmailRegexTests.swift in Sources */,
 				239F2A6F2CE4CDE200A7C627 /* TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
