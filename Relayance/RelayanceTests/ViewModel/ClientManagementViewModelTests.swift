@@ -47,10 +47,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     
     func testShouldReturnErrorWhenEmailIsInvalid() throws {
         //Given
-        let initialClient = Client(
-            nom: initialNom,
-            email: initialEmail,
-            dateCreationString: "2024-10-10T08:30:00.000Z")
+        let initialClient = Client.stubClientWithInvalidEmail()
         
         clientManagementViewModel.clientsList = [initialClient]
         
@@ -215,7 +212,7 @@ final class ClientManagementViewModelTests: XCTestCase {
     
     func testClientExists_WhenClientDoesNotExist_ShouldReturnFalse(){
         //Given
-        let nom = "Cena John"
+        let nom = "John Cena"
         let email = "www_Cena.John@catch.com"
         let list = [
             Client(
