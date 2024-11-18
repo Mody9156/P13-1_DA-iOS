@@ -28,7 +28,7 @@ struct DetailClientView: View {
             Text(client.email)
                 .font(.title3)
             
-            Text(clientManagementViewModel.formatDateVersString(client: client))
+            Text(clientManagementViewModel.formatDateToString(client: client))
                 .font(.title3)
             
             Spacer()
