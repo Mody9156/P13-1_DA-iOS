@@ -8,7 +8,7 @@
 import Foundation
 
 struct ModelData {
-    static func chargement<T: Decodable>(_ nomFichier: String) -> T {
+    static func chargement<T: Decodable>(_ nomFichier: String) -> T {//fonctions génériques 
         let data: Data
         
         guard let file = Bundle.main.url(forResource: nomFichier, withExtension: nil)
@@ -28,5 +28,5 @@ struct ModelData {
         } catch {
             fatalError("Impossible de parser \(nomFichier) en tant que \(T.self):\n\(error)")
         }
-    }//6
+    }
 }

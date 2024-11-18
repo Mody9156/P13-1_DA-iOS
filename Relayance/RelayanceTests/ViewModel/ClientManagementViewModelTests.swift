@@ -237,7 +237,6 @@ final class ClientManagementViewModelTests: XCTestCase {
          let date = Date.stringFromDate(Date.now)
          //When
          let formatDateVersString = clientManagementViewModel.formatDateVersString(client: client)
-
          //Then
          XCTAssertEqual(formatDateVersString, date)
          

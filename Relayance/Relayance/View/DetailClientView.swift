@@ -11,6 +11,7 @@ struct DetailClientView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var client: Client
     @ObservedObject var clientManagementViewModel : ClientManagementViewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "person.circle")
@@ -18,7 +19,9 @@ struct DetailClientView: View {
                 .frame(width: 150, height: 150)
                 .foregroundStyle(.orange)
                 .padding(50)
+            
             Spacer()
+            
             Text(client.nom)
                 .font(.title)
                 .padding()
@@ -45,4 +48,3 @@ struct DetailClientView: View {
         }
     }
 }
-
