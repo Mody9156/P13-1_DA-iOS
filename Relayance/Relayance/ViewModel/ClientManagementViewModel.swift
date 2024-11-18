@@ -30,7 +30,7 @@ class ClientManagementViewModel : ObservableObject {
         
         if EmailRegex.isValidEmail(email){
             
-            if !clientExiste(nom: nom, email: email) {
+            if !doesClientExist(nom: nom, email: email) {
                 clientsList.append(newClient)
                 message = ""
             }else{
@@ -51,19 +51,19 @@ class ClientManagementViewModel : ObservableObject {
         }
     }
     
-    func estNouveauClient(client : Client) -> Bool {
-        let aujourdhui = Date.now
-        let dateCreation = client.dateCreation
+    func isNewClient(client : Client) -> Bool {
+        let today = Date.now
+        let creationDate = client.dateCreation
         
-        if aujourdhui.getYear() != dateCreation.getYear() ||
-            aujourdhui.getMonth() != dateCreation.getMonth() ||
-            aujourdhui.getDay() != dateCreation.getDay() {
+        if today.getYear() != creationDate.getYear() ||
+            today.getMonth() != creationDate.getMonth() ||
+            today.getDay() != creationDate.getDay() {
             return false
         }
         return true
     }
     
-    func clientExiste(nom: String, email: String) -> Bool {
+    func doesClientExist(nom: String, email: String) -> Bool {
         return clientsList.contains(where: {$0.nom == nom && $0.email == email})
     }
     

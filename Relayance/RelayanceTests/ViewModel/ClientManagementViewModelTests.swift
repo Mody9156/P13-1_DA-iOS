@@ -87,7 +87,7 @@ final class ClientManagementViewModelTests: XCTestCase {
                 
         //When
         let _ = try clientManagementViewModel.addClientToList(nom: nom, email:email)
-        let _ = clientManagementViewModel.clientExiste(nom: nom, email: email)
+        let _ = clientManagementViewModel.doesClientExist(nom: nom, email: email)
 
         //Then
         XCTAssertEqual(clientManagementViewModel.clientsList.count, 1)
@@ -174,7 +174,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         //When
         let addClient = try clientManagementViewModel.addClientToList(nom: nom, email:email)
         
-        let estNouveauClient = clientManagementViewModel.estNouveauClient(client: clientManagementViewModel.clientsList[1])
+        let estNouveauClient = clientManagementViewModel.isNewClient(client: clientManagementViewModel.clientsList[1])
         
          //then
          XCTAssertEqual(estNouveauClient,true)
@@ -186,7 +186,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          let clientManagementViewModel = ClientManagementViewModel(client: client)
          
          //when
-         let estNouveauClient = clientManagementViewModel.estNouveauClient(client: client)
+         let estNouveauClient = clientManagementViewModel.isNewClient(client: client)
          
          //then
          XCTAssertEqual(estNouveauClient,false)
@@ -205,7 +205,7 @@ final class ClientManagementViewModelTests: XCTestCase {
          clientManagementViewModel.clientsList = list
 
          //When
-         let clientExiste = clientManagementViewModel.clientExiste(nom: nom, email: email)
+         let clientExiste = clientManagementViewModel.doesClientExist(nom: nom, email: email)
          
          //Then
          XCTAssertEqual(clientExiste, false)
