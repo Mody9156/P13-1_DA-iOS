@@ -68,11 +68,7 @@ class ClientManagementViewModel : ObservableObject {
     }
     
     func formatDateVersString(client : Client) -> String {
-        let formatDateVersString = Date.stringFromDate(client.dateCreation)
-        let dateNow = String(describing:Date.now)
-        if let date =  formatDateVersString{
-            return date
-        }
-        return client.dateCreationString
+        let date = Date.stringFromDate(client.dateCreation)
+        return date
     }
 }
