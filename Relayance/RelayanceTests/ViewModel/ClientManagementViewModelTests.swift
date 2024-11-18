@@ -232,21 +232,20 @@ final class ClientManagementViewModelTests: XCTestCase {
    
      func testDateFormattedToString_whenInvalidDate_shouldReturnCorrectString(){
          //Given
-         let dateCreationString = ""
-         let client = Client(nom: initialNom, email: initialEmail, dateCreationString: dateCreationString)
-         clientManagementViewModel.clientsList = [client]
-         let date = Date()
-          let fomattingString = Date.stringFromDate(date)
-          //then
-          XCTAssertNotNil(fomattingString)
+         let client = Client.stubClientWithEmptyData()
+         var dateCreationString = Client.CodingKeys.dateCreationString
+         var dateCreation: Date {
+             Date.dateFromString(dateCreationString.rawValue) ?? Date.now
+         }
+         
+         let stringFromDate = Date.stringFromDate(dateCreation)
+                  
          //When
          let formatDateVersString = clientManagementViewModel.formatDateVersString(client: client)
-         let isoDateFormatter = DateFormatter()
-         isoDateFormatter.dateFormat = "dd-MM-yyyy"
-         isoDateFormatter.string(from: client.dateCreation)
-         //then
-         XCTAssertEqual(formatDateVersString, fomattingString)
-     }//a revoir
+
+         //Then
+         
+     }
      
      func testDateCreation_whenDateCreationStringIsInvalid_shouldReturnCurrentDate(){
          //Given

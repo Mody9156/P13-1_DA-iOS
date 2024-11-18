@@ -24,10 +24,10 @@ struct DetailClientView: View {
                 .padding()
             Text(client.email)
                 .font(.title3)
-            Text(clientManagementViewModel.formatDateVersString(client: client))
             
             Text(clientManagementViewModel.formatDateVersString(client: client))
                 .font(.title3)
+            
             Spacer()
         }
         .toolbar {
