@@ -82,12 +82,12 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		239F2A702CE5834300A7C627 /* TestSupport */ = {
+		239F2A702CE5834300A7C627 /* UnitTestsSupport */ = {
 			isa = PBXGroup;
 			children = (
 				239F2A6E2CE4CDE200A7C627 /* TestHelpers.swift */,
 			);
-			path = TestSupport;
+			path = UnitTestsSupport;
 			sourceTree = "<group>";
 		};
 		23A0B19F2CE3551400634D8E /* ViewModel */ = {
@@ -187,7 +187,7 @@
 		422740802C3BF4DD00E7522C /* RelayanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				239F2A702CE5834300A7C627 /* TestSupport */,
+				239F2A702CE5834300A7C627 /* UnitTestsSupport */,
 				23A0B19F2CE3551400634D8E /* ViewModel */,
 				23375A362CDD4ED30089E1E2 /* Extension */,
 			);
