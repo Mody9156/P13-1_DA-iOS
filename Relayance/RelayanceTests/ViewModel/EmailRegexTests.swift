@@ -12,14 +12,25 @@ final class EmailRegexTests: XCTestCase {
 
    
     func testWhenEmailNoThrowsError()  {
-        //given
+        //Given
         let email = "exemple@gmail.com"
-
+        
         //When
         let emailRegex = EmailRegex.isValidEmail(email)
         
         //Then
         XCTAssertTrue(emailRegex)
+    }
+    
+    func testWhenEmailThrowsError(){
+        //Given
+        
+        
+        //When
+        
+        
+        //Then
+        
     }
 
 }
