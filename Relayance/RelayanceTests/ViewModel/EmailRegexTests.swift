@@ -24,13 +24,13 @@ final class EmailRegexTests: XCTestCase {
     
     func testWhenEmailThrowsError(){
         //Given
-        
+        let email = "fakeEmail"
         
         //When
-        
+        let emailRegex = EmailRegex.isValidEmail(email)
         
         //Then
-        
+        XCTAssertFalse(emailRegex)
     }
 
 }
