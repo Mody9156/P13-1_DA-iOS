@@ -8,7 +8,7 @@
 import Foundation
 
 struct ModelData {
-    static func chargement<T: Decodable>(_ nomFichier: String) -> T {//fonctions génériques 
+    static func chargement<T: Decodable>(_ nomFichier: String) -> T {//fonctions génériques
         let data: Data
         
         guard let file = Bundle.main.url(forResource: nomFichier, withExtension: nil)

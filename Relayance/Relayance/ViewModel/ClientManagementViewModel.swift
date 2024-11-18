@@ -17,7 +17,7 @@ class ClientManagementViewModel : ObservableObject {
     }
     
     /// Fonctions
-    static func createNouveauClient(nom: String, email: String) -> Client {
+    static func createNewClient(nom: String, email: String) -> Client {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
@@ -26,7 +26,7 @@ class ClientManagementViewModel : ObservableObject {
     
     @discardableResult
     func addClientToList(nom:String,email:String) throws -> [Client]{
-        let newClient = ClientManagementViewModel.createNouveauClient(nom: nom, email: email)
+        let newClient = ClientManagementViewModel.createNewClient(nom: nom, email: email)
         
         if EmailRegex.isValidEmail(email){
             
