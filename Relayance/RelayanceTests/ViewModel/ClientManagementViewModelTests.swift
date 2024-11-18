@@ -227,18 +227,19 @@ final class ClientManagementViewModelTests: XCTestCase {
          
          //Then
          XCTAssertTrue(type)
+         XCTAssertEqual(dateFormat, "07-11-2023")
 
      }
    
      func testDateFormattedToString_whenDateIsInvalid_returnsDateNow(){
          //Given
          let client = Client.stubClientWithEmptyData()
-                
+         let date = Date.stringFromDate(Date.now)
          //When
          let formatDateVersString = clientManagementViewModel.formatDateVersString(client: client)
 
          //Then
-         XCTAssertEqual(formatDateVersString, createdDateWithToDay())
+         XCTAssertEqual(formatDateVersString, date)
          
      }
      
