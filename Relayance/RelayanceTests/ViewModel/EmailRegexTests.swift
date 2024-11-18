@@ -10,7 +10,6 @@ import XCTest
 
 final class EmailRegexTests: XCTestCase {
 
-   
     func testWhenEmailNoThrowsError()  {
         //Given
         let email = "exemple@gmail.com"
@@ -32,5 +31,4 @@ final class EmailRegexTests: XCTestCase {
         //Then
         XCTAssertFalse(emailRegex)
     }
-
 }
