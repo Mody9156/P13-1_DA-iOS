@@ -230,20 +230,15 @@ final class ClientManagementViewModelTests: XCTestCase {
 
      }
    
-     func testDateFormattedToString_whenInvalidDate_shouldReturnCorrectString(){
+     func testDateFormattedToString_whenDateIsInvalid_returnsDateNow(){
          //Given
          let client = Client.stubClientWithEmptyData()
-         var dateCreationString = Client.CodingKeys.dateCreationString
-         var dateCreation: Date {
-             Date.dateFromString(dateCreationString.rawValue) ?? Date.now
-         }
-         
-         let stringFromDate = Date.stringFromDate(dateCreation)
-                  
+                
          //When
          let formatDateVersString = clientManagementViewModel.formatDateVersString(client: client)
 
          //Then
+         XCTAssertEqual(formatDateVersString, createdDateWithToDay())
          
      }
      
