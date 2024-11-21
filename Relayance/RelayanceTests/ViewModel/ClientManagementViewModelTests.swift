@@ -303,7 +303,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         
         //Then
         XCTAssertTrue(modelData.isEmpty)
-g    }
+    }
     
     func testClientExists_whenClientDoesNotExist_shouldReturnFalse(){
         //Given
