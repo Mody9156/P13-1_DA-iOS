@@ -122,7 +122,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertTrue(clientManagementViewModel.clientsList.isEmpty)
     }
     
-    func testWhenDeleteClient_ThrowError() throws {
+    func testWhenDeleteClient_throwError() throws {
         //Given
         let initialClient = Client(
             nom: initialNom,
@@ -142,7 +142,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertTrue(clientManagementViewModel.clientsList.count == 1)
     }
     
-    func testShouldCreateNewClient_WhenDataIsValid(){
+    func testShouldCreateNewClient_whenDataIsValid(){
         //Given
         let nom = "Nelson"
         let email = "Nelson_exemple@gmail.com"
@@ -160,7 +160,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(createNouveauClient.dateCreationString.prefix(19), currentDataString.prefix(19))
     }
     
-    func testShouldCreateNouveauClient_WhenCreationIsFailure(){
+    func testShouldCreateNouveauClient_whenCreationIsFailure(){
         //Given
         let nom = ""
         let email = ""
@@ -198,7 +198,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(isNewClient,true)
     }
     
-    func testGivenDateIsNotToday_whenGetDateIsDifferent_ReturnsFalse(){
+    func testGivenDateIsNotToday_whenGetDateIsDifferent_returnsFalse(){
         //Given
         let client = Client.stubClient()
         let clientManagementViewModel = ClientManagementViewModel(client: client)
@@ -210,7 +210,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(isNewClient,false)
     }
     
-    func testClientExists_WhenClientDoesNotExist_ShouldReturnFalse(){
+    func testClientExists_whenClientDoesNotExist_shouldReturnFalse(){
         //Given
         let nom = "John Cena"
         let email = "www_Cena.John@catch.com"
