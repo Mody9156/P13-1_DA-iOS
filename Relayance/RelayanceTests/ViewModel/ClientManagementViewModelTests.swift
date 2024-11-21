@@ -269,7 +269,6 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(stringFromDate, dateNow)
         
     }
- 
     
     func testClientExists_whenClientDoesNotExist_shouldReturnFalse(){
         //Given

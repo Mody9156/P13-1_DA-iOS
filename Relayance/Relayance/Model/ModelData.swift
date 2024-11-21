@@ -11,7 +11,7 @@ struct ModelData {
     static func chargement<T: Decodable>(_ nomFichier: String) -> T {//fonctions génériques
         let data: Data
         
-        guard let file = Bundle.main.url(forResource: nomFichier, withExtension: "json")
+        guard let file = Bundle.main.url(forResource: nomFichier, withExtension: nil)
         else {
             fatalError("Impossible de trouver \(nomFichier) dans le main bundle.")
         }
