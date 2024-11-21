@@ -24,3 +24,10 @@ extension Client {
           return Client(nom: "Jane Doe", email: "invalid-email", dateCreationString: "2023-11-07T12:00:00Z")
       }
 }
+
+extension ModelData {
+    
+    static func mockChargementFileNotFound<T: Decodable>(_ nomFichier: String) -> T {
+        fatalError("Impossible de trouver \(nomFichier) dans le main bundle.")
+    }
+}

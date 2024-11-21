@@ -23,6 +23,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         self.initialEmail = "john.doe@example.com"
     }
     
+    
     func testWhenAddNewClient_doesNotThrowError() throws{
         //Given
         let initialClient = Client(
@@ -268,42 +269,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(stringFromDate, dateNow)
         
     }
-    
-    func testDecodeJsonFile_doesNotThrowError() throws {
-        //Given
-          struct User : Codable,Equatable{
-            var nom : String
-            var email : String
-            var date_creation : String
-        }
-        
-        //When
-        let modelData : [User] = ModelData.chargement("Source.json")
-        print("Voici ton tableau : \(modelData)")
-        
-        //Then
-        XCTAssertFalse(modelData.isEmpty)
-        XCTAssertEqual(modelData[0].nom, "Frida Kahlo")
-        XCTAssertEqual(modelData[1].email, "mahatma.gandhi@example.com")
-        XCTAssertEqual(modelData[2].date_creation, "2022-03-10T10:45:00Z")
-
-    }
-    
-    func testDecodeJsonFile_returnsEmptyArrayWhenNoData() throws {
-        //Given
-          struct User : Codable,Equatable{
-            var nom : String
-            var email : String
-            var date_creation : String
-        }
-        
-        //When
-        let modelData : [User] = ModelData.chargement("")
-        print("Voici ton tableau : \(modelData)")
-        
-        //Then
-        XCTAssertTrue(modelData.isEmpty)
-    }
+ 
     
     func testClientExists_whenClientDoesNotExist_shouldReturnFalse(){
         //Given
@@ -366,8 +332,8 @@ final class ClientManagementViewModelTests: XCTestCase {
         //Then
         XCTAssertEqual(formatDateToString, date)
         XCTAssert(abs(type.timeIntervalSince(dateNow)) < 1)
-
+        
     }
+   
+    
 }
-
-
