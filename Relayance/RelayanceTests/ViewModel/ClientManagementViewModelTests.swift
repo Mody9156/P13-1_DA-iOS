@@ -210,6 +210,101 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(isNewClient,false)
     }
     
+    func testDateFromStringWithValidFormatReturnsCorrectDate(){
+        //Given
+        let date = "2023-02-20T09:15:00Z"
+        
+        let isoDateFormatter = ISO8601DateFormatter()
+        isoDateFormatter.formatOptions = [.withFullDate]
+        
+        //When
+        let dateFromString  = Date.dateFromString(date)
+        
+        //Then
+        XCTAssertEqual(dateFromString, isoDateFormatter.date(from: date))
+    }
+    
+    func testDateFromStringWithInvalidFormatReturnsNil(){
+        //Given
+        let date = ""
+        
+        let isoDateFormatter = ISO8601DateFormatter()
+        isoDateFormatter.formatOptions = [.withFullDate]
+        
+        //When
+        let dateFromString  = Date.dateFromString(date)
+        
+        //Then
+        XCTAssertEqual(dateFromString, nil)
+    }
+    
+    func testDateToString_whenValidDate_shouldReturnFormattedString(){
+        //Given
+        let date = "2023-02-20T09:15:00Z"
+        
+        let dateFromString = Date.dateFromString(date)
+        
+        //When
+        let stringFromDate = Date.stringFromDate(dateFromString ?? Date.now)
+        
+        //Then
+        XCTAssertEqual(stringFromDate, "20-02-2023")
+        
+    }
+    
+    func testDateToString_whenValidDate_shouldReturnCurrentDateAsString(){
+        //Given
+        let date = ""
+        let isoDateFormatter = DateFormatter()
+        isoDateFormatter.dateFormat = "dd-MM-yyyy"
+        let dateNow = isoDateFormatter.string(from:Date.now)
+        
+        let dateFromString = Date.dateFromString(date)
+        
+        //When
+        let stringFromDate = Date.stringFromDate(dateFromString ?? Date.now)
+        
+        //Then
+        XCTAssertEqual(stringFromDate, dateNow)
+        
+    }
+    
+    func testDecodeJsonFile_doesNotThrowError() throws {
+        //Given
+          struct User : Codable,Equatable{
+            var nom : String
+            var email : String
+            var date_creation : String
+        }
+        
+        //When
+        let modelData : [User] = ModelData.chargement("Source.json")
+        print("Voici ton tableau : \(modelData)")
+        
+        //Then
+        XCTAssertFalse(modelData.isEmpty)
+        XCTAssertEqual(modelData[0].nom, "Frida Kahlo")
+        XCTAssertEqual(modelData[1].email, "mahatma.gandhi@example.com")
+        XCTAssertEqual(modelData[2].date_creation, "2022-03-10T10:45:00Z")
+
+    }
+    
+    func testDecodeJsonFile_returnsEmptyArrayWhenNoData() throws {
+        //Given
+          struct User : Codable,Equatable{
+            var nom : String
+            var email : String
+            var date_creation : String
+        }
+        
+        //When
+        let modelData : [User] = ModelData.chargement("")
+        print("Voici ton tableau : \(modelData)")
+        
+        //Then
+        XCTAssertTrue(modelData.isEmpty)
+g    }
+    
     func testClientExists_whenClientDoesNotExist_shouldReturnFalse(){
         //Given
         let nom = "John Cena"
@@ -238,7 +333,7 @@ final class ClientManagementViewModelTests: XCTestCase {
         XCTAssertEqual(clientExiste, false)
     }
     
-    func testDateFormattedToString_WhenValidDate_ShouldReturnCorrectString(){
+    func testDateFormattedToString_whenValidDate_shouldReturnCorrectString(){
         //Given
         let client = Client.stubClient()
         clientManagementViewModel.clientsList = [client]
