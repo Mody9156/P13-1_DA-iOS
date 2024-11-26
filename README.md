@@ -43,7 +43,7 @@ Ce projet s'articule autour de trois grandes activités :
 
 | <p align="center"><img src="Screenshots/Home.png" width="200" alt="home"></p> | <p align="center"><img src="Screenshots/Details.png" width="200" alt="details"></p> | <p align="center"><img src="Screenshots/AddUsers.png" width="200" alt="AddUsers"></p> |
 |:--:|:--:|:--:|
-| **Home** | **Details** | **Search** |
+| **Home** | **Details** | **AddUsers** |
 
 - **Screenshot 1**: Display the article list screen where users can browse through the available articles.
   
